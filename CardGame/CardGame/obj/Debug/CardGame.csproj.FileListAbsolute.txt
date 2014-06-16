@@ -1,0 +1,15 @@
+\\INSURANCE\FileData\SiteHome\IT\RHarris\CardGame\CardGame\CardGame\bin\Debug\CardGame.exe.config
+\\INSURANCE\FileData\SiteHome\IT\RHarris\CardGame\CardGame\CardGame\bin\Debug\CardGame.exe
+\\INSURANCE\FileData\SiteHome\IT\RHarris\CardGame\CardGame\CardGame\bin\Debug\CardGame.pdb
+\\INSURANCE\FileData\SiteHome\IT\RHarris\CardGame\CardGame\CardGame\obj\Debug\CardGame.csprojResolveAssemblyReference.cache
+\\INSURANCE\FileData\SiteHome\IT\RHarris\CardGame\CardGame\CardGame\obj\Debug\CardGame.exe
+\\INSURANCE\FileData\SiteHome\IT\RHarris\CardGame\CardGame\CardGame\obj\Debug\CardGame.pdb
+\\INSURANCE\FileData\SiteHome\IT\RHarris\CurrentProjects\CardGame\CardGame\CardGame\bin\Debug\CardGame.exe.config
+\\INSURANCE\FileData\SiteHome\IT\RHarris\CurrentProjects\CardGame\CardGame\CardGame\obj\Debug\CardGame.exe
+\\INSURANCE\FileData\SiteHome\IT\RHarris\CurrentProjects\CardGame\CardGame\CardGame\obj\Debug\CardGame.pdb
+\\INSURANCE\FileData\SiteHome\IT\RHarris\CurrentProjects\CardGamev1.2\CardGame\CardGame\bin\Debug\CardGame.exe.config
+\\INSURANCE\FileData\SiteHome\IT\RHarris\CurrentProjects\CardGamev1.2\CardGame\CardGame\obj\Debug\CardGame.exe
+\\INSURANCE\FileData\SiteHome\IT\RHarris\CurrentProjects\CardGamev1.2\CardGame\CardGame\obj\Debug\CardGame.pdb
+\\INSURANCE\FileData\SiteHome\IT\RHarris\CurrentProjects\CardGamev1.2\CardGame\CardGame\bin\Debug\CardGame.exe
+\\INSURANCE\FileData\SiteHome\IT\RHarris\CurrentProjects\CardGamev1.2\CardGame\CardGame\bin\Debug\CardGame.pdb
+\\INSURANCE\FileData\SiteHome\IT\RHarris\CurrentProjects\CardGamev1.2\CardGame\CardGame\obj\Debug\CardGame.csprojResolveAssemblyReference.cache

@@ -14,6 +14,15 @@ namespace CardGame
 
         private void BuildDeck()
         {
+            //foreach (Suit suit in (Suit[]) Enum.GetValues(typeof(Suit)))
+            //{
+            //    foreach (Value value in (Value[]) Enum.GetValues(typeof (Value)))
+            //    {
+                    
+            //    }
+                
+            //}
+
             const int numberOfSuits = 4;
 
             for (var j = 0; j < numberOfSuits; j++)

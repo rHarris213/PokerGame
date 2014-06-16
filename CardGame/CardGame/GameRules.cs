@@ -9,15 +9,14 @@ namespace CardGame
 {
     public class GameRules
     {
-        public void CompareHighCards(int sentCardOne, int sentCardTwo)
+        public void CompareCards(Hand playerOneHand, Hand playerTwoHand)
         {
-            if (sentCardOne > sentCardTwo)
-            {
+            int playerOneScore = 0;
+            int playerTwoScore = 0;
 
-            }else
-            {
-                int i = 00;
-            }
+            playerOneHand.CheckFlush();
+            playerOneHand.CheckStraight();
+            playerOneHand.CheckHighCard();
 
         }
     }

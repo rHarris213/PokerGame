@@ -19,7 +19,7 @@ namespace CardGame
 
 
 
-
+            aDeck.Shuffle();
             aDeck.Deal(playerOne);
             aDeck.Deal(playerTwo);
             
@@ -33,7 +33,7 @@ namespace CardGame
                     {
 
                         Console.WriteLine("Deck Cards:" + aDeck.Count());
-                        Console.Write("Who's Turn: ");
+                        Console.Write("Whose Turn: ");
                         if (i == 0)
                         {
                             Console.WriteLine("Player One");
@@ -43,6 +43,7 @@ namespace CardGame
                             Console.WriteLine("Player Two");
                         }
                         Console.WriteLine("===Player One Hand===");
+
                         OutputCards(playerOne.GetCards());
                         Console.WriteLine("===Player Two Hand===");
                         OutputCards(playerTwo.GetCards());
@@ -118,36 +119,72 @@ namespace CardGame
 
         public static void OutputCards(IEnumerable<Card> sentCards)
         {
-            
+            int i = 1;
+
+            var outputForValue = "";
+
+            const int hearts = 0;
+            const int clubs = 1;
+            const int diamonds = 2;
+            const int spades = 3;
+
+            const int ace = 14;
+            const int king = 13;
+            const int queen = 12;
+            const int jack = 11;
+
             foreach (var aCard in sentCards)
             {
-                var cardSuitValue = aCard.GetCardSuit();
-                const int hearts = 0;
-                const int clubs = 1;
-                const int diamonds = 2;
-                const int spades = 3;
-
+                var cardNumberValue = aCard.GetCardValue();
                 
+
+                var cardSuitValue = aCard.GetCardSuit();
+                
+
+
+                switch (cardNumberValue)
+                {
+                    case ace:
+                        outputForValue = "A ";
+                        break;
+                    case king:
+                        outputForValue = "K ";
+                        break;
+                    case queen:
+                        outputForValue = "Q ";
+                        break;
+                    case jack:
+                        outputForValue = "J ";
+                        break;
+                    default:
+                        outputForValue = cardNumberValue + " ";
+                        break;
+                }
 
                 switch (cardSuitValue)
                 {
                     case hearts:
-                        Console.WriteLine(aCard.GetCardValue() + "H");
+                        Console.WriteLine(i + ": "+ outputForValue + "H");
                         break;
                     case clubs:
-                        Console.WriteLine(aCard.GetCardValue() + "C");
+                        Console.WriteLine(i + ": "+ outputForValue + "C");
                         break;
                     case diamonds:
-                        Console.WriteLine(aCard.GetCardValue() + "D");
+                        Console.WriteLine(i + ": "+ outputForValue + "D");
                         break;
                     case spades:
-                        Console.WriteLine(aCard.GetCardValue() + "S");
+                        Console.WriteLine(i + ": "+ outputForValue + "S");
                         break;
                     default:
                         break;
 
                 }
+
+                i++;
             }
+            Console.WriteLine();
+
+
 
         }
 

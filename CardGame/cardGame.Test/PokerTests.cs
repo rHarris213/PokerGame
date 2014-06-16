@@ -101,12 +101,28 @@ namespace cardGame.Test
             
             aHand.TakeCards(new Card(2, 0));
             aHand.TakeCards(new Card(2, 1));
-            aHand.TakeCards(new Card(3, 2));
+            aHand.TakeCards(new Card(4, 2));
             aHand.TakeCards(new Card(4, 3));
             aHand.TakeCards(new Card(5, 4));
            
             
-            Assert.That(aHand.CheckMultiples().Equals());
+            Assert.That(aHand.CheckMultiples().Equals(2));
+        }
+
+        [Test]
+        public void Cards_Can_Be_Returned()
+        {
+            var aHand = new Hand();
+
+            aHand.TakeCards(new Card(2, 0));
+            aHand.TakeCards(new Card(2, 1));
+            aHand.TakeCards(new Card(2, 2));
+            aHand.TakeCards(new Card(4, 3));
+            aHand.TakeCards(new Card(5, 4));
+
+            aHand.
+
+            Assert.That(aHand.GetCards().Count == 4);
         }
     }
 }

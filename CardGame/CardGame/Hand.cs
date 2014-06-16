@@ -17,7 +17,7 @@ namespace CardGame
 
         public void Show()
         {
-            foreach (Card aCard in Cards)
+            foreach (var aCard in Cards)
             {
                 Console.WriteLine(aCard);
             }
@@ -66,7 +66,7 @@ namespace CardGame
 
         public bool CheckFlush()
         {
-
+            
             int suitValue = Cards[0].GetCardSuit();
             foreach (var aCard in Cards)
             {
@@ -76,7 +76,7 @@ namespace CardGame
                     return false;
                 }
             }
-            return true;
+            return true ;
         }
         
         public bool CheckStraight()
@@ -101,49 +101,79 @@ namespace CardGame
 
         }
 
-        public bool CheckStraightFlush()
+        public int CheckStraightFlush()
         {
-            
+            int handValue = 0;
             var initialCardValue = SortCards()[0].GetCardValue();
 
             if (CheckStraight() && CheckFlush())
             {
-                return true;
+
+                if (CheckRoyalFlush())
+                {
+                    handValue = 9;
+                    
+                }
+                else
+                {
+                    handValue = 8;
+                }
             }
-            return false;
+            else
+            {
+                handValue = 5;
+
+            }
+            return handValue;
         }
 
         public bool CheckRoyalFlush()
         {
             var initialCardValue = SortCards()[0].GetCardValue();
 
-            if (CheckStraightFlush() && initialCardValue == 10)
+            if (initialCardValue == 10)
             {
                 return true;
             }
             return false;
         }
 
-        public bool CheckMultiples()
+        public int CheckMultiples()
         {
-            
+            int highestMult = 0;
+            int numOfPairs = 0;
+            int handValue = 0;
 
             for (int i = 0; i < 15; i++)
             {
                 
+                
                 IEnumerable<Card> multiples = Cards.Where(obj => obj.GetCardValue() == i);
+
+                
+                if (multiples.Count() > 3)
+                {
+                    handValue = 7;
+
+                }
+                if (multiples.Count() > 2)
+                {
+                    handValue = 3;
+                }
                 if (multiples.Count() > 1)
                 {
-                    
-                    return true;
-                }
-              
-                   
+                    handValue = 1;
+                    numOfPairs += 1;
 
-             
+                }
+                
             }
-           
-            return false;
+
+            if (numOfPairs > 1)
+            {
+                handValue = 2;
+            }
+            return handValue;
         }
 
         public List<Card> SortCards()

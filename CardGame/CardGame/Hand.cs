@@ -64,7 +64,7 @@ namespace CardGame
            return highCard;
        }
 
-        public bool CheckFlush()
+        public int CheckFlush()
         {
             
             int suitValue = Cards[0].GetCardSuit();
@@ -73,13 +73,13 @@ namespace CardGame
                 if (aCard.GetCardSuit() != suitValue)
                 {
 
-                    return false;
+                    return 0;
                 }
             }
-            return true ;
+            return 5 ;
         }
         
-        public bool CheckStraight()
+        public int CheckStraight()
         {
 
             var sorted = new List<Card>(Cards.OrderBy(o => o.GetCardValue()));
@@ -92,12 +92,12 @@ namespace CardGame
                 {
                     if (!(initialCardValue == 2 && sorted[i].GetCardValue() == 14))
                     {
-                        return false;
+                        return 0;
                     }
                 }
                 
             }
-            return true;
+            return 4;
 
         }
 
@@ -106,7 +106,7 @@ namespace CardGame
             int handValue = 0;
             var initialCardValue = SortCards()[0].GetCardValue();
 
-            if (CheckStraight() && CheckFlush())
+            if (CheckStraight() > 0 && CheckFlush() > 0)
             {
 
                 if (CheckRoyalFlush())
@@ -121,7 +121,7 @@ namespace CardGame
             }
             else
             {
-                handValue = 5;
+                handValue = 0;
 
             }
             return handValue;
@@ -140,9 +140,10 @@ namespace CardGame
 
         public int CheckMultiples()
         {
-            int highestMult = 0;
+            bool threeOfAKind = false;
             int numOfPairs = 0;
             int handValue = 0;
+           
 
             for (int i = 0; i < 15; i++)
             {
@@ -151,25 +152,36 @@ namespace CardGame
                 IEnumerable<Card> multiples = Cards.Where(obj => obj.GetCardValue() == i);
 
                 
-                if (multiples.Count() > 3)
+                if (multiples.Count() == 4)
                 {
                     handValue = 7;
 
                 }
-                if (multiples.Count() > 2)
+                if (multiples.Count() == 3)
                 {
-                    handValue = 3;
+                    if (handValue < 3)
+                    {
+                        handValue = 3;
+                    }
+                    threeOfAKind = true;
+
                 }
-                if (multiples.Count() > 1)
+                if (multiples.Count() == 2)
                 {
-                    handValue = 1;
+                    if (handValue < 1)
+                    {
+                        handValue = 1;
+                    }
                     numOfPairs += 1;
 
                 }
                 
             }
-
-            if (numOfPairs > 1)
+            if (numOfPairs == 1 && threeOfAKind)
+            {
+                handValue = 6;
+            }else 
+            if (numOfPairs == 2)
             {
                 handValue = 2;
             }

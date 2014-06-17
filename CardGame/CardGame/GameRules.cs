@@ -9,15 +9,44 @@ namespace CardGame
 {
     public class GameRules
     {
-        public void CompareCards(Hand playerOneHand, Hand playerTwoHand)
+        public int CompareCards(Hand playerOneHand, Hand playerTwoHand)
         {
-            int playerOneScore = 0;
-            int playerTwoScore = 0;
+            var playerOneScore = 0;
+            var playerTwoScore = 0;
 
-            playerOneHand.CheckFlush();
-            playerOneHand.CheckStraight();
-            playerOneHand.CheckHighCard();
+            if (playerOneHand.CheckFlush() > playerOneScore)
+                playerOneScore = playerOneHand.CheckFlush();
+            if (playerOneHand.CheckStraight() > playerOneScore)
+                playerOneScore = playerOneHand.CheckStraight();
+            if (playerOneHand.CheckMultiples() > playerOneScore)
+                playerOneScore = playerOneHand.CheckMultiples();
 
+            if (playerTwoHand.CheckFlush() > playerOneScore)
+                playerTwoScore = playerTwoHand.CheckFlush();
+            if (playerTwoHand.CheckStraight() > playerTwoScore)
+                playerTwoScore = playerTwoHand.CheckStraight();
+            if (playerTwoHand.CheckMultiples() > playerTwoScore)
+                playerTwoScore = playerTwoHand.CheckMultiples();
+
+            if (playerOneScore == playerTwoScore)
+            {
+                playerOneScore = playerOneHand.CheckHighCard();
+                playerTwoScore = playerTwoHand.CheckHighCard();
+            }
+
+            if (playerOneScore > playerTwoScore)
+            {
+                return 1;
+            }
+            if (playerTwoScore > playerOneScore)
+            {
+                return 2;
+            }
+            if(playerOneScore == playerTwoScore)
+            {
+                return 0;
+            }
+            return 0;
         }
     }
 }

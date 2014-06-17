@@ -14,8 +14,10 @@ namespace CardGame
             var aDeck = new Deck();
             var playerOne = new Hand();
             var playerTwo = new Hand();
-            int numberOfPlayers = 2;
+            var poker = new GameRules();
+            const int numberOfPlayers = 2;
             bool gameWon = false;
+
 
 
 
@@ -47,6 +49,16 @@ namespace CardGame
                         OutputCards(playerOne.GetCards());
                         Console.WriteLine("===Player Two Hand===");
                         OutputCards(playerTwo.GetCards());
+
+                        if (poker.CompareCards(playerOne, playerTwo) == 0)
+                        {
+                            
+                        }else if (poker.CompareCards(playerOne, playerTwo) == 1)
+                        {
+
+                        }
+                        //else if (//poker.CompareCards(player))
+
                         Console.WriteLine("D: Deal to Hand");
                         Console.WriteLine("S: Shuffle Deck");
                         Console.WriteLine("X: See Deck");
@@ -205,6 +217,14 @@ namespace CardGame
 
             }
 
+        }
+
+        public static void CheckForWin()
+        {
+            if (true)
+            {
+                
+            }
         }
     }
 }

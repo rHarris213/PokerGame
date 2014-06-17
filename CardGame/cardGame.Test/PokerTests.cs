@@ -611,14 +611,153 @@ namespace cardGame.Test
 
         }
 
+        [Test]
+        public void Two_Pairs_Should_Not_Include_Three_Of_A_Kind()
+        {
+            var twoPair = new List<Card>
+            {
+               
+                new Card(2, 2),
+                new Card(2, 3),
+                new Card(2, 2),
+                new Card(9, 1),
+                new Card(9, 1)
+            };
 
+            var analyser = new TwoPairAnalyser(twoPair);
+
+            var result = analyser.IsHand();
+
+            Assert.IsFalse(result);
+
+
+        }
+
+        [Test]
+        public void Pair_Should_Include_Two_Cards_Of_The_Same_Value()
+        {
+            var pair = new List<Card>
+            {
+               
+                new Card(2, 2),
+                new Card(2, 3),
+                new Card(3, 2),
+                new Card(4, 1),
+                new Card(5, 1)
+            };
+
+            var analyser = new PairAnalyser(pair);
+
+            var result = analyser.IsHand();
+
+            Assert.IsTrue(result);
+
+
+        }
+
+        [Test]
+        public void Pair_Should_Not_Include_Multiple_Sets_Of_Two_Cards_Of_The_Same_Value()
+        {
+            var pair = new List<Card>
+            {
+               
+                new Card(2, 2),
+                new Card(2, 3),
+                new Card(3, 2),
+                new Card(3, 1),
+                new Card(5, 1)
+            };
+
+            var analyser = new PairAnalyser(pair);
+
+            var result = analyser.IsHand();
+
+            Assert.IsFalse(result);
+
+
+        }
+
+        [Test]
+        public void Pair_Should_Not_Include_Three_Of_A_Kind_As_Pair()
+        {
+            var pair = new List<Card>
+            {
+               
+                new Card(2, 2),
+                new Card(3, 3),
+                new Card(3, 2),
+                new Card(3, 1),
+                new Card(5, 1)
+            };
+
+            var analyser = new PairAnalyser(pair);
+
+            var result = analyser.IsHand();
+
+            Assert.IsFalse(result);
+
+
+        }
+
+    }
+
+    internal class PairAnalyser
+    {
+        private readonly List<Card> _hand; 
+        public PairAnalyser(List<Card> hand)
+        {
+            _hand = hand;
+        }
+
+        public bool IsHand()
+        {
+            var numberOfPairs = 0;
+            for (var i = 0; i < 15; i++)
+            {
+                IEnumerable<Card> cardsOfSameValue = _hand.Where(obj => obj.GetCardValue() == i);
+
+
+                if (cardsOfSameValue.Count() == 2)
+                {
+                    numberOfPairs++;
+                }
+
+            }
+            if (numberOfPairs == 1)
+            {
+             return true;   
+            }
+            return false;
+        }
     }
 
     internal class TwoPairAnalyser
     {
-        public TwoPairAnalyser(List<Card> twoPair)
+        private readonly List<Card> _hand; 
+        public TwoPairAnalyser(List<Card> hand)
         {
-            throw new System.NotImplementedException();
+            _hand = hand;
+        }
+
+        public bool IsHand()
+        {
+            var numberOfPairs = 0;
+            for (var i = 0; i < 15; i++)
+            {
+                IEnumerable<Card> cardsOfSameValue = _hand.Where(obj => obj.GetCardValue() == i);
+
+
+                if (cardsOfSameValue.Count() == 2)
+                {
+                    numberOfPairs++;
+                    if (numberOfPairs == 2)
+                    {
+                        return true;
+                    }
+                }
+
+            }
+            return false;
         }
     }
 

@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Net.NetworkInformation;
+using cardGame.Test;
 
 namespace CardGame
 {
@@ -27,15 +29,15 @@ namespace CardGame
     //    Two
     //}
 
-    public class Card
+    public class Card : ICard
     {
-        private readonly int CardValue;
+        private readonly int _cardValue;
 
-        private readonly int CardSuit;
+        private readonly int _cardSuit;
 
         public int GetCardValue()
         {
-            return CardValue;
+            return _cardValue;
         }
 
         //public Suit Suit { get; set; }
@@ -43,14 +45,14 @@ namespace CardGame
 
         public int GetCardSuit()
         {
-            return CardSuit;
+            return _cardSuit;
         }
 
         public Card(int sentCardValue, int sentCardSuit)
         {
 
-           CardValue = sentCardValue;
-           CardSuit = sentCardSuit;
+           _cardValue = sentCardValue;
+           _cardSuit = sentCardSuit;
         }
 
         //public string Description
@@ -62,6 +64,8 @@ namespace CardGame
         //{
         //    return base.Equals(obj);
         //}
+
+      
     }
 }
 

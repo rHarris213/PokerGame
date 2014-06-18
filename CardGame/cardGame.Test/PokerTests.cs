@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using CardGame;
+using CardGame.HandAnalysers;
 using NUnit.Framework;
 
 namespace cardGame.Test
@@ -196,493 +197,28 @@ namespace cardGame.Test
 
         }
 
-        [Test]
-        public void Cards_Can_Be_Returned()
-        {
-            var aHand = new Hand();
+        //[Test]
+        //public void Cards_Can_Be_Returned()
+        //{
+        //    var aHand = new Hand();
 
-            aHand.TakeCards(new Card(2, 0));
-            aHand.TakeCards(new Card(2, 1));
-            aHand.TakeCards(new Card(2, 2));
-            aHand.TakeCards(new Card(4, 3));
-            aHand.TakeCards(new Card(5, 4));
+        //    aHand.TakeCards(new Card(2, 0));
+        //    aHand.TakeCards(new Card(2, 1));
+        //    aHand.TakeCards(new Card(2, 2));
+        //    aHand.TakeCards(new Card(4, 3));
+        //    aHand.TakeCards(new Card(5, 4));
 
           
 
-            Assert.That(aHand.GetCards().Count == 4);
-        }
-
-        [Test]
-        public void Royal_Flush_Should_Only_Contain_Cards_From_The_Same_Suit()
-        {
-            // arrange
-            var royalFlush = new List<Card>
-            {
-                new Card(10, 1),
-                new Card(11, 1),
-                new Card(12, 1),
-                new Card(13, 1),
-                new Card(14, 1)
-            };
-            var analyser = new RoyalFlushHandAnalyser(royalFlush);
-            // act
-            var result = analyser.IsHand();
-            // assert
-            Assert.IsTrue(result);
-        }
-
-        [Test]
-        public void Royal_Flush_Should_not_Contain_Cards_From_other_suits()
-        {
-            // arrange
-            var royalFlush = new List<Card>
-            {
-                new Card(10, 1),
-                new Card(11, 2),
-                new Card(12, 1),
-                new Card(13, 1),
-                new Card(14, 1)
-            };
-            var analyser = new RoyalFlushHandAnalyser(royalFlush);
-            // act
-            var result = analyser.IsHand();
-            // assert
-            Assert.IsFalse(result);
-        }
-
-        [Test]
-        public void Royal_Flush_Should_Contain_correct_sequence_of_cards()
-        {
-            // arrange
-            var royalFlush = new List<Card>
-            {
-                new Card(10, 1),
-                new Card(11, 1),
-                new Card(12, 1),
-                new Card(13, 1),
-                new Card(14, 1)
-            };
-            var analyser = new RoyalFlushHandAnalyser(royalFlush);
-            // act
-            var result = analyser.IsHand();
-            // assert
-            Assert.IsTrue(result);
-        }
-
-        [Test]
-        public void Royal_Flush_Should_not_Contain_incorrect_sequence_of_cards()
-        {
-            // arrange
-            var royalFlush = new List<Card>
-            {
-                new Card(10, 1),
-                new Card(11, 1),
-                new Card(8, 1),
-                new Card(13, 1),
-                new Card(14, 1)
-            };
-            var analyser = new RoyalFlushHandAnalyser(royalFlush);
-            // act
-            var result = analyser.IsHand();
-            // assert
-            Assert.IsFalse(result);
-        }
-
-        [Test]
-        public void Straight_Flush_Should_Contain_Cards_Of_The_Same_Suit()
-        {
-            var straightFlush = new List<Card>
-            {
-                new Card(2, 1),
-                new Card(3, 1),
-                new Card(4, 1),
-                new Card(5, 1),
-                new Card(6, 1)
-            };
-
-            var analyser = new StraightFlushAnalyser(straightFlush);
-
-            var result = analyser.IsHand();
-
-            Assert.IsTrue(result);
-
-
-        }
-
-        [Test]
-        public void Straight_Flush_Should_Not_Contain_Cards_Of_The_Same_Suit()
-        {
-            var straightFlush = new List<Card>
-            {
-                new Card(2, 1),
-                new Card(3, 1),
-                new Card(4, 2),
-                new Card(5, 1),
-                new Card(6, 1)
-            };
-
-            var analyser = new StraightFlushAnalyser(straightFlush);
-
-            var result = analyser.IsHand();
-
-            Assert.IsFalse(result);
-
-
-        }
-
-        [Test]
-        public void Straight_Flush_Should_Contain_Correct_Sequence_Of_Cards()
-        {
-            var straightFlush = new List<Card>
-            {
-                new Card(2, 1),
-                new Card(3, 1),
-                new Card(4, 1),
-                new Card(5, 1),
-                new Card(6, 1)
-            };
-
-            var analyser = new StraightFlushAnalyser(straightFlush);
-
-            var result = analyser.IsHand();
-
-            Assert.IsTrue(result);
-
-
-        }
-
-        [Test]
-        public void Straight_Flush_Should_Not_Contain_Inorrect_Sequence_Of_Cards()
-        {
-            var straightFlush = new List<Card>
-            {
-                new Card(2, 1),
-                new Card(3, 1),
-                new Card(4, 1),
-                new Card(5, 1),
-                new Card(9, 1)
-            };
-
-            var analyser = new StraightFlushAnalyser(straightFlush);
-
-            var result = analyser.IsHand();
-
-            Assert.IsFalse(result);
-
-
-        }
-
-        [Test]
-        public void Straight_Flush_Should_Allow_Ace_To_Be_Low()
-        {
-            var straightFlush = new List<Card>
-            {
-                new Card(2, 1),
-                new Card(3, 1),
-                new Card(4, 1),
-                new Card(5, 1),
-                new Card(14, 1)
-            };
-
-            var analyser = new StraightFlushAnalyser(straightFlush);
-
-            var result = analyser.IsHand();
-
-            Assert.IsTrue(result);
-
-
-        }
-
-        [Test]
-        public void Four_Of_A_Kind_Should_Contain_Same_Card_Values()
-        {
-            var fourOfAKind = new List<Card>
-            {
-                new Card(2, 1),
-                new Card(2, 2),
-                new Card(2, 3),
-                new Card(2, 4),
-                new Card(9, 1)
-            };
-
-            var analyser = new FourOfAKindAnalyser(fourOfAKind);
-
-            var result = analyser.IsHand();
-
-            Assert.IsTrue(result);
-
-
-        }
-
-        [Test]
-        public void Four_Of_A_Kind_Should_Not_Be_Counted_When_Five_Of_A_Kind()
-        {
-            var fourOfAKind = new List<Card>
-            {
-                new Card(2, 1),
-                new Card(2, 2),
-                new Card(2, 3),
-                new Card(2, 4),
-                new Card(2, 1)
-            };
-
-            var analyser = new FourOfAKindAnalyser(fourOfAKind);
-
-            var result = analyser.IsHand();
-
-            Assert.IsFalse(result);
-
-
-        }
-
-        [Test]
-        public void Full_House_Should_Be_Identified_In_larger_lists_than_5()
-        {
-            var fullHouse = new List<Card>
-            {
-                new Card(1, 1),
-                new Card(2, 2),
-                new Card(2, 3),
-                new Card(9, 2),
-                new Card(9, 1),
-                new Card(9, 1)
-            };
-
-            var analyser = new FullHouseAnalyser(fullHouse);
-
-            var result = analyser.IsHand();
-
-            Assert.IsTrue(result);
-
-
-        }
+        //    Assert.That(aHand.GetCards().Count == 4);
+        //}
 
         
-
         [Test]
-        public void Flush_Should_Contain_A_Single_Suit()
-        {
-            var flush = new List<Card>
-            {
-                new Card(2, 1),
-                new Card(4, 1),
-                new Card(6, 1),
-                new Card(8, 1),
-                new Card(10, 1)
-            };
-
-            var analyser = new FlushAnalyser(flush);
-
-            var result = analyser.IsHand();
-
-            Assert.IsTrue(result);
-
-
-        }
-
-        [Test]
-        public void Straight_Should_Contain_Correct_Sequence_Of_Cards()
-        {
-            var straight = new List<Card>
-            {
-                new Card(2, 1),
-                new Card(3, 1),
-                new Card(4, 1),
-                new Card(5, 1),
-                new Card(6, 1)
-            };
-
-            var analyser = new StraightAnalyser(straight);
-
-            var result = analyser.IsHand();
-
-            Assert.IsTrue(result);
-
-
-        }
-
-        [Test]
-        public void Three_Of_A_Kind_Should_Have_Three_Cards_Of_The_Same_Value()
+        public void Evaluator_Should_Determine_Hand_Score()
         {
             var threeOfAKind = new List<Card>
             {
-               
-                new Card(1, 2),
-                new Card(2, 3),
-                new Card(9, 2),
-                new Card(9, 1),
-                new Card(9, 1)
-            };
-
-            var analyser = new ThreeOfAKindAnalyser(threeOfAKind);
-
-            var result = analyser.IsHand();
-
-            Assert.IsTrue(result);
-
-
-        }
-
-        [Test]
-        public void Three_Of_A_Kind_Should_Work_With_More_Than_Five_Cards()
-        {
-            var threeOfAKind = new List<Card>
-            {
-                new Card(1, 2),
-                new Card(2, 3),
-                new Card(4, 2),
-                new Card(5, 1),
-                new Card(7, 2),
-                new Card(8, 3),
-                new Card(9, 2),
-                new Card(9, 1),
-                new Card(9, 1)
-            };
-
-            var analyser = new ThreeOfAKindAnalyser(threeOfAKind);
-
-            var result = analyser.IsHand();
-
-            Assert.IsTrue(result);
-
-
-        }
-
-        [Test]
-        public void Three_Of_A_Kind_Should_Work_With_Less_Than_Five_Cards()
-        {
-            var threeOfAKind = new List<Card>
-            {
-              
-                new Card(8, 3),
-                new Card(9, 2),
-                new Card(9, 1),
-                new Card(9, 1)
-            };
-
-            var analyser = new ThreeOfAKindAnalyser(threeOfAKind);
-
-            var result = analyser.IsHand();
-
-            Assert.IsTrue(result);
-
-
-        }
-
-        [Test]
-        public void Three_Of_A_Kind_Should_Not_Trigger_Work_With_More_Than_Three_Cards_Alike()
-        {
-            var threeOfAKind = new List<Card>
-            {
-                new Card(8, 3),
-                new Card(9, 3),
-                new Card(9, 2),
-                new Card(9, 1),
-                new Card(9, 1)
-            };
-
-            var analyser = new ThreeOfAKindAnalyser(threeOfAKind);
-
-            var result = analyser.IsHand();
-
-            Assert.IsFalse(result);
-
-
-        }
-        [Test]
-        public void Two_Pairs_Should_Have_Two_Sets_Of_Cards_With_Same_Value()
-        {
-            var twoPair = new List<Card>
-            {
-               
-                new Card(1, 2),
-                new Card(2, 3),
-                new Card(2, 2),
-                new Card(9, 1),
-                new Card(9, 1)
-            };
-
-            var analyser = new TwoPairAnalyser(twoPair);
-
-            var result = analyser.IsHand();
-
-            Assert.IsTrue(result);
-
-
-        }
-
-        [Test]
-        public void Two_Pairs_Should_Not_Include_Three_Of_A_Kind()
-        {
-            var twoPair = new List<Card>
-            {
-               
-                new Card(2, 2),
-                new Card(2, 3),
-                new Card(2, 2),
-                new Card(9, 1),
-                new Card(9, 1)
-            };
-
-            var analyser = new TwoPairAnalyser(twoPair);
-
-            var result = analyser.IsHand();
-
-            Assert.IsFalse(result);
-
-
-        }
-
-        [Test]
-        public void Pair_Should_Include_Two_Cards_Of_The_Same_Value()
-        {
-            var pair = new List<Card>
-            {
-               
-                new Card(2, 2),
-                new Card(2, 3),
-                new Card(3, 2),
-                new Card(4, 1),
-                new Card(5, 1)
-            };
-
-            var analyser = new PairAnalyser(pair);
-
-            var result = analyser.IsHand();
-
-            Assert.IsTrue(result);
-
-
-        }
-
-        [Test]
-        public void Pair_Should_Not_Include_Multiple_Sets_Of_Two_Cards_Of_The_Same_Value()
-        {
-            var pair = new List<Card>
-            {
-               
-                new Card(2, 2),
-                new Card(2, 3),
-                new Card(3, 2),
-                new Card(3, 1),
-                new Card(5, 1)
-            };
-
-            var analyser = new PairAnalyser(pair);
-
-            var result = analyser.IsHand();
-
-            Assert.IsFalse(result);
-
-
-        }
-
-        [Test]
-        public void Pair_Should_Not_Include_Three_Of_A_Kind_As_Pair()
-        {
-            var pair = new List<Card>
-            {
-               
                 new Card(2, 2),
                 new Card(3, 3),
                 new Card(3, 2),
@@ -690,56 +226,57 @@ namespace cardGame.Test
                 new Card(5, 1)
             };
 
-            var analyser = new PairAnalyser(pair);
+            var evaluator = new HandEvaluator(threeOfAKind);
 
-            var result = analyser.IsHand();
+            var result = evaluator.ScoreHand();
 
-            Assert.IsFalse(result);
-
-
+            Assert.That(result == 3);
         }
-
     }
 
-    internal class PairAnalyser
+    internal class HandEvaluator
     {
-        private readonly List<Card> _hand; 
-        public PairAnalyser(List<Card> hand)
+        private readonly List<Card> _hand;
+
+        public HandEvaluator(List<Card> hand)
         {
             _hand = hand;
         }
 
-        public bool IsHand()
+        public int ScoreHand()
         {
-            var numberOfPairs = 0;
+
+            if (IsThreeOfAKind())
+                return 3;
+            if (IsTwoPair())
+                return 2;
+            if (IsOnePair())
+                return 1;
+            else
+                return 0;
+
+
+
+        }
+
+        public bool IsThreeOfAKind()
+        {
             for (var i = 0; i < 15; i++)
             {
                 IEnumerable<Card> cardsOfSameValue = _hand.Where(obj => obj.GetCardValue() == i);
 
 
-                if (cardsOfSameValue.Count() == 2)
+                if (cardsOfSameValue.Count() == 3)
                 {
-                    numberOfPairs++;
-                }
+                    return true;
 
-            }
-            if (numberOfPairs == 1)
-            {
-             return true;   
+                }
+               
             }
             return false;
         }
-    }
 
-    internal class TwoPairAnalyser
-    {
-        private readonly List<Card> _hand; 
-        public TwoPairAnalyser(List<Card> hand)
-        {
-            _hand = hand;
-        }
-
-        public bool IsHand()
+        public bool IsTwoPair()
         {
             var numberOfPairs = 0;
             for (var i = 0; i < 15; i++)
@@ -759,220 +296,42 @@ namespace cardGame.Test
             }
             return false;
         }
-    }
 
-    internal class ThreeOfAKindAnalyser
-    {
-        private readonly List<Card> _hand; 
-        public ThreeOfAKindAnalyser(List<Card> hand)
+        public bool IsOnePair()
         {
-            _hand = hand;
-        }
-
-        public bool IsHand()
-        {
+            var numberOfPairs = 0;
             for (var i = 0; i < 15; i++)
             {
                 IEnumerable<Card> cardsOfSameValue = _hand.Where(obj => obj.GetCardValue() == i);
 
 
-                if (cardsOfSameValue.Count() == 3)
+                if (cardsOfSameValue.Count() == 2)
                 {
-                    return true;
-
+                    numberOfPairs++;
                 }
-               
+
+            }
+            if (numberOfPairs == 1)
+            {
+                return true;
             }
             return false;
         }
+       
     }
 
-    internal class StraightAnalyser
+    public interface IHand
     {
-        private readonly List<Card> _hand; 
-        public StraightAnalyser(List<Card> hand)
-        {
-            _hand = hand;
-        }
-
-        public bool IsHand()
-        {
-            int cardsChecked = 0;
-            int? expectedCard = null;
-            foreach (var card in _hand.OrderBy(c => c.GetCardValue()))
-            {
-                if (!expectedCard.HasValue)
-                {
-                    expectedCard = card.GetCardValue();
-                }
-                if (cardsChecked == 4 && expectedCard == 6 && card.GetCardValue() == 14)
-                {
-                    return true;
-                }
-                if ( card.GetCardValue() != expectedCard)
-                {
-
-                    return false;
-                }
-
-                cardsChecked ++;
-                expectedCard ++;
-
-            }
-            return true;
-        }
+        IEnumerable<ICard> Cards { get; }
     }
 
-    internal class FlushAnalyser
+    public interface IEvaluator
     {
-        private readonly List<Card> _hand; 
-        public FlushAnalyser(List<Card> hand)
-        {
-            _hand = hand;
-        }
-
-        public bool IsHand()
-        {
-            int? suit = null;
-            foreach (var card in _hand)
-            {
-                if (suit.HasValue && suit != card.GetCardSuit())
-                {
-                    return false;
-                }
-                suit = card.GetCardSuit();
-            }
-            return true;
-        }
+        IHand GetWinningHand(IEnumerable<IHand> hands);
     }
 
-    internal class FullHouseAnalyser
+    public interface IDealer
     {
-        private readonly List<Card> _hand;
-        public FullHouseAnalyser(List<Card> hand)
-        {
-            _hand = hand;
-        }
-
-        public bool IsHand()
-        {
-            var threeOfAKind = false;
-            var pair = false;
-
-            for (var i = 0; i < 15; i++)
-            {
-                IEnumerable<Card> cardsOfSameValue = _hand.Where(obj => obj.GetCardValue() == i);
-
-
-                if (cardsOfSameValue.Count() > 2 && !threeOfAKind)
-                {
-                    threeOfAKind = true;
-
-                }
-                else if (cardsOfSameValue.Count() > 1 && !pair)
-                {
-                    pair = true;
-
-                }
-                if (threeOfAKind && pair)
-                {
-                    return true;
-                }
-            }
-            return false;
-        }
-    }
-
-    internal class FourOfAKindAnalyser
-    {
-        private readonly List<Card> _hand ;
-        public FourOfAKindAnalyser(List<Card> hand)
-        {
-            _hand = hand;
-        }
-
-        public bool IsHand()
-        {
-
-            for (var i = 0; i < 15; i ++)
-            {
-                IEnumerable<Card> fourMatchCheck = _hand.Where(obj => obj.GetCardValue() == i);
-
-
-                if (fourMatchCheck.Count() == 4)
-                {
-                    return true;
-
-                }
-            }
-            return false;
-        }
-    }
-
-    internal class StraightFlushAnalyser
-    {
-        private readonly List<Card> _hand;
-
-        public StraightFlushAnalyser(List<Card> hand)
-        {
-            _hand = hand;
-        }
-
-        public bool IsHand()
-        {
-            int? suit = null;
-            int? expectedCard = null;
-            int cardsChecked = 0;
-
-            foreach (var card in _hand.OrderBy(c => c.GetCardValue()))
-            {
-                if (!expectedCard.HasValue)
-                {
-                    expectedCard = card.GetCardValue();
-                }
-                if (cardsChecked == 4 && expectedCard == 6 && card.GetCardValue() == 14)
-                {
-                    return true;
-                }
-               
-                if ((suit.HasValue && suit.Value != card.GetCardSuit())|| card.GetCardValue() != expectedCard)
-                {
-                   
-                    return false;
-                }
-                suit = card.GetCardSuit();
-                expectedCard ++;
-                cardsChecked++;
-               
-
-            }
-            return true;
-        }
-    }
-
-    internal class RoyalFlushHandAnalyser
-    {
-        private readonly List<Card> _hand;
-
-        public RoyalFlushHandAnalyser(List<Card> hand)
-        {
-            _hand = hand;
-        }
-
-        public bool IsHand()
-        {
-            int? suit = null;
-            int expectedCard = 10;
-            foreach (var card in _hand.OrderBy(c => c.GetCardValue()))
-            {
-                if ((suit.HasValue && suit.Value != card.GetCardSuit()) || (card.GetCardValue() != expectedCard))
-                {
-                    return false;
-                }
-                expectedCard++;
-                suit = card.GetCardSuit();
-            }
-            return true;
-        }
+        IEnumerable<IHand> Deal(int numberOfPlayers);
     }
 }

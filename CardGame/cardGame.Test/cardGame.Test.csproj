@@ -46,6 +46,17 @@
     <Compile Include="CardTests.cs" />
     <Compile Include="Class1.cs" />
     <Compile Include="DeskTests.cs" />
+    <Compile Include="EvaluatorTests.cs" />
+    <Compile Include="HandAnalyser\FlushTests.cs" />
+    <Compile Include="HandAnalyser\FourOfAKindTests.cs" />
+    <Compile Include="HandAnalyser\FullHouseTests.cs" />
+    <Compile Include="HandAnalyser\OnePair.cs" />
+    <Compile Include="HandAnalyser\RoyalFlushAnalyserTest.cs" />
+    <Compile Include="HandAnalyser\StraightTests.cs" />
+    <Compile Include="HandAnalyser\StraightFlushTests.cs" />
+    <Compile Include="HandAnalyser\ThreeOfAKindTests.cs" />
+    <Compile Include="HandAnalyser\TwoPair.cs" />
+    <Compile Include="ICardTests.cs" />
     <Compile Include="PokerTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TestClass.cs" />
@@ -56,6 +67,7 @@
       <Name>CardGame</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

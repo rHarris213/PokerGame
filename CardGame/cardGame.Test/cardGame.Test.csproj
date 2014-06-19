@@ -43,6 +43,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Builders\HandBuilder.cs" />
     <Compile Include="CardTests.cs" />
     <Compile Include="Class1.cs" />
     <Compile Include="DeskTests.cs" />
@@ -57,7 +58,6 @@
     <Compile Include="HandAnalyser\ThreeOfAKindTests.cs" />
     <Compile Include="HandAnalyser\TwoPair.cs" />
     <Compile Include="ICardTests.cs" />
-    <Compile Include="PokerTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TestClass.cs" />
   </ItemGroup>

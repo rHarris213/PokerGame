@@ -4,16 +4,10 @@ namespace CardGame.HandAnalysers
 {
     public class FlushAnalyser : IHandAnalyser
     {
-        private readonly List<Card> _hand; 
-        public FlushAnalyser(List<Card> hand)
-        {
-            _hand = hand;
-        }
-
-        public bool IsHand()
+        public bool IsHand(Hand hand)
         {
             int? suit = null;
-            foreach (var card in _hand)
+            foreach (var card in hand.GetCards())
             {
                 if (suit.HasValue && suit != card.GetCardSuit())
                 {

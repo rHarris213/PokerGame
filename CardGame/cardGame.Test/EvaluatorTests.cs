@@ -1,7 +1,10 @@
 ﻿using System.Collections.Generic;
-using System.Linq;
+using System.Security.AccessControl;
+using System.Security.Cryptography.X509Certificates;
+using System.Threading;
 using CardGame;
 using CardGame.HandAnalysers;
+using cardGame.Test.Builders;
 using NUnit.Framework;
 
 namespace cardGame.Test
@@ -9,76 +12,143 @@ namespace cardGame.Test
     [TestFixture]
     class EvaluatorTests
     {
-        [Test]
-        public void Evaluator_Should_Assign_Correct_Value_To_Hand()
+        [Test] public void Evaluator_Should_Accept_Multiple_Hands()
         {
             //arrange
- 
-            
             //act
-            var royalFlush = new List<Card>
-            {
-               
-                new Card(14, 1),
-                new Card(13, 1),
-                new Card(12, 1),
-                new Card(11, 1),
-                new Card(10, 1)
-            };
+            //var royalFlush = new List<Card>
+            //{
 
-            var evaluator = new Evaluator(royalFlush);
-
-            var result = evaluator.EvaluateHandScore();
+            //    new Card(14, 1),
+            //    new Card(13, 1),
+            //    new Card(12, 1),
+            //    new Card(11, 1),
+            //    new Card(10, 1)
+            //};
+            //var result = evaluator.EvaluateHandScore(royalFlush);
             //assert
-            Assert.That(result.Equals(9));
+
+            var playerOne = HandBuilder.TwoPair();
+            var playerTwo = HandBuilder.TwoPair();
+            var playerThree = HandBuilder.TwoPair();
+            var playerFour = HandBuilder.TwoPair();
+            var playerFive = HandBuilder.TwoPair();
+            var playerSix = HandBuilder.RoyalFlush();
+
+            var hands = new List<Hand> { playerOne, playerTwo,playerThree,playerFour,playerFive,playerSix };
+
+
+            var evaluator = new Evaluator(PokerHandAnalysers.FiveCardPoker());
+            var result = evaluator.DetermineWinner(hands);
+            Assert.That(result.Equals(playerSix));
+        }
+
+        [Test]
+        public void Evaluator_Should_Determine_A_Winner()
+        {
+            //arrange
+            //act
+            //var royalFlush = new List<Card>
+            //{
+
+            //    new Card(14, 1),
+            //    new Card(13, 1),
+            //    new Card(12, 1),
+            //    new Card(11, 1),
+            //    new Card(10, 1)
+            //};
+            //var result = evaluator.EvaluateHandScore(royalFlush);
+            //assert
+            
+            var playerOne = HandBuilder.RoyalFlush();
+            var playerTwo = HandBuilder.ThreeOfAKind();
+
+            var hands = new List<Hand> {playerOne, playerTwo};
+
+
+            var evaluator = new Evaluator(PokerHandAnalysers.FiveCardPoker());
+            var result = evaluator.DetermineWinner(hands);
+            Assert.That(result.Equals(playerOne));
+        }
+
+        [Test]
+        public void Evaluator_Should_Not_Allow_A_Lower_Ranked_Card_Set_Win()
+        {
+            //arrange
+            //act
+            //var royalFlush = new List<Card>
+            //{
+
+            //    new Card(14, 1),
+            //    new Card(13, 1),
+            //    new Card(12, 1),
+            //    new Card(11, 1),
+            //    new Card(10, 1)
+            //};
+            //var result = evaluator.EvaluateHandScore(royalFlush);
+            //assert
+
+            var playerOne = HandBuilder.ThreeOfAKind();
+            var playerTwo = HandBuilder.RoyalFlush();
+
+            var hands = new List<Hand> { playerOne, playerTwo };
+
+
+            var evaluator = new Evaluator(PokerHandAnalysers.FiveCardPoker());
+            var result = evaluator.DetermineWinner(hands);
+            Assert.That(result.Equals(playerTwo));
+        }
+
+        [Test]
+        public void Evaluator_Should_Identify_A_Draw()
+        {
+            
+
+            var playerOne = HandBuilder.ThreeOfAKind();
+            var playerTwo = HandBuilder.RoyalFlush();
+
+            var hands = new List<Hand> { playerOne, playerTwo };
+
+
+            var evaluator = new Evaluator(PokerHandAnalysers.FiveCardPoker());
+            var result = evaluator.DetermineWinner(hands);
+            Assert.That(result.Equals(playerTwo));
         }
     }
 
     internal class Evaluator
     {
-        private List<Card> _hand = new List<Card>(); 
-        public Evaluator(List<Card> hand)
+        private readonly IList<IHandAnalyser> _analysers;
+
+        public Evaluator(IList<IHandAnalyser> analysers)
         {
-            _hand = hand;
+            _analysers = analysers;
         }
-
-        public int EvaluateHandScore()
+        
+        public Hand DetermineWinner(IEnumerable<Hand> hands)
         {
-
-            //var handEvaluators = new HandEvaluators();
-            List<IHandAnalyser> handAnalysers = new List<IHandAnalyser> 
-            {   new RoyalFlushHandAnalyser(_hand),
-                new StraightFlushAnalyser(_hand),
-                new FourOfAKindAnalyser(_hand),
-                new FullHouseAnalyser(_hand),
-                new FlushAnalyser(_hand),
-                new StraightAnalyser(_hand),
-                new ThreeOfAKindAnalyser(_hand),
-                new TwoPairAnalyser(_hand),
-                new OnePairAnalyser(_hand)};
-
-            int handScore = 10;
-            foreach (var handEval in handAnalysers)
-            {
-                var ishand = handEval.IsHand();
-
-                if (ishand)
-                    return handScore;
-
-                handScore--;
-            }
-
-            IHandAnalyser royalFlushAnalyser = new RoyalFlushHandAnalyser(_hand);
-           
-
-
-
-            if(royalFlushAnalyser.IsHand())
-            return 10;
+            Hand bestHand = null;
             
-            if (royalFlushAnalyser.IsHand())
-            return 9;
-            return 0;
+            var highestScore = 0;
+
+            foreach (var hand in hands)
+            {
+                int handScore = _analysers.Count;
+
+                foreach (var analyser in _analysers)
+                {
+                    handScore--;
+                    if (!analyser.IsHand(hand)) continue;
+                    if (handScore > highestScore)
+                    {
+                        bestHand = hand;
+                        highestScore = handScore;
+
+                    }
+                    break;
+                }
+            }
+            return bestHand;
         }
     }
 }

@@ -2,6 +2,7 @@
 using System.Linq;
 using CardGame;
 using CardGame.HandAnalysers;
+using cardGame.Test.Builders;
 using NUnit.Framework;
 
 namespace cardGame.Test.HandAnalyser
@@ -22,9 +23,9 @@ namespace cardGame.Test.HandAnalyser
                 new Card(13, 1),
                 new Card(14, 1)
             };
-            var analyser = new RoyalFlushHandAnalyser(royalFlush);
+            var analyser = new RoyalFlushHandAnalyser();
             // act
-            var result = analyser.IsHand();
+            var result = analyser.IsHand(HandBuilder.RoyalFlush());
             // assert
             Assert.IsTrue(result);
         }
@@ -41,9 +42,9 @@ namespace cardGame.Test.HandAnalyser
                 new Card(13, 1),
                 new Card(14, 1)
             };
-            var analyser = new RoyalFlushHandAnalyser(royalFlush);
+            var analyser = new RoyalFlushHandAnalyser();
             // act
-            var result = analyser.IsHand();
+            var result = analyser.IsHand(HandBuilder.RandomHand());
             // assert
             Assert.IsFalse(result);
         }
@@ -51,18 +52,10 @@ namespace cardGame.Test.HandAnalyser
         [Test]
         public void Royal_Flush_Should_Contain_correct_sequence_of_cards()
         {
-            // arrange
-            var royalFlush = new List<Card>
-            {
-                new Card(10, 1),
-                new Card(11, 1),
-                new Card(12, 1),
-                new Card(13, 1),
-                new Card(14, 1)
-            };
-            var analyser = new RoyalFlushHandAnalyser(royalFlush);
+           
+            var analyser = new RoyalFlushHandAnalyser();
             // act
-            var result = analyser.IsHand();
+            var result = analyser.IsHand(HandBuilder.RoyalFlush());
             // assert
             Assert.IsTrue(result);
         }
@@ -79,9 +72,9 @@ namespace cardGame.Test.HandAnalyser
                 new Card(13, 1),
                 new Card(14, 1)
             };
-            var analyser = new RoyalFlushHandAnalyser(royalFlush);
+            var analyser = new RoyalFlushHandAnalyser();
             // act
-            var result = analyser.IsHand();
+            var result = analyser.IsHand(HandBuilder.RandomHand());
             // assert
             Assert.IsFalse(result);
         }

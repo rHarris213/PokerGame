@@ -2,6 +2,7 @@
 using System.Linq;
 using CardGame;
 using CardGame.HandAnalysers;
+using cardGame.Test.Builders;
 using NUnit.Framework;
 
 namespace cardGame.Test.HandAnalyser
@@ -12,102 +13,46 @@ namespace cardGame.Test.HandAnalyser
         [Test]
         public void Straight_Flush_Should_Contain_Cards_Of_The_Same_Suit()
         {
-            var straightFlush = new List<Card>
-            {
-                new Card(2, 1),
-                new Card(3, 1),
-                new Card(4, 1),
-                new Card(5, 1),
-                new Card(6, 1)
-            };
+            var analyser = new StraightFlushAnalyser();
 
-            var analyser = new StraightFlushAnalyser(straightFlush);
-
-            var result = analyser.IsHand();
+            var result = analyser.IsHand(HandBuilder.StraightFlush());
 
             Assert.IsTrue(result);
-
-
         }
 
         [Test]
-        public void Straight_Flush_Should_Not_Contain_Cards_Of_The_Same_Suit()
+        public void Straight_Flush_Should_Not_Contain_Incorrect_Sequence_Of_Cards()
         {
-            var straightFlush = new List<Card>
-            {
-                new Card(2, 1),
-                new Card(3, 1),
-                new Card(4, 2),
-                new Card(5, 1),
-                new Card(6, 1)
-            };
+            var analyser = new StraightFlushAnalyser();
 
-            var analyser = new StraightFlushAnalyser(straightFlush);
-
-            var result = analyser.IsHand();
+            var result = analyser.IsHand(HandBuilder.RandomHand());
 
             Assert.IsFalse(result);
-
-
         }
 
         [Test]
         public void Straight_Flush_Should_Contain_Correct_Sequence_Of_Cards()
         {
-            var straightFlush = new List<Card>
-            {
-                new Card(2, 1),
-                new Card(3, 1),
-                new Card(4, 1),
-                new Card(5, 1),
-                new Card(6, 1)
-            };
+            
 
-            var analyser = new StraightFlushAnalyser(straightFlush);
+            var analyser = new StraightFlushAnalyser();
 
-            var result = analyser.IsHand();
+            var result = analyser.IsHand(HandBuilder.StraightFlush());
 
             Assert.IsTrue(result);
 
 
         }
-
-        [Test]
-        public void Straight_Flush_Should_Not_Contain_Inorrect_Sequence_Of_Cards()
-        {
-            var straightFlush = new List<Card>
-            {
-                new Card(2, 1),
-                new Card(3, 1),
-                new Card(4, 1),
-                new Card(5, 1),
-                new Card(9, 1)
-            };
-
-            var analyser = new StraightFlushAnalyser(straightFlush);
-
-            var result = analyser.IsHand();
-
-            Assert.IsFalse(result);
-
-
-        }
+        
 
         [Test]
         public void Straight_Flush_Should_Allow_Ace_To_Be_Low()
         {
-            var straightFlush = new List<Card>
-            {
-                new Card(2, 1),
-                new Card(3, 1),
-                new Card(4, 1),
-                new Card(5, 1),
-                new Card(14, 1)
-            };
+            
 
-            var analyser = new StraightFlushAnalyser(straightFlush);
+            var analyser = new StraightFlushAnalyser();
 
-            var result = analyser.IsHand();
+            var result = analyser.IsHand(HandBuilder.StraightFlushWithAceLow());
 
             Assert.IsTrue(result);
 

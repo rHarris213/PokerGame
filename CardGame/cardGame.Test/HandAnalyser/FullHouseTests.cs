@@ -2,6 +2,7 @@
 using System.Linq;
 using CardGame;
 using CardGame.HandAnalysers;
+using cardGame.Test.Builders;
 using NUnit.Framework;
 
 namespace cardGame.Test.HandAnalyser
@@ -12,19 +13,11 @@ namespace cardGame.Test.HandAnalyser
         [Test]
         public void Full_House_Should_Be_Identified_In_larger_lists_than_5()
         {
-            var fullHouse = new List<Card>
-            {
-                new Card(1, 1),
-                new Card(2, 2),
-                new Card(2, 3),
-                new Card(9, 2),
-                new Card(9, 1),
-                new Card(9, 1)
-            };
+            
 
-            var analyser = new FullHouseAnalyser(fullHouse);
+            var analyser = new FullHouseAnalyser();
 
-            var result = analyser.IsHand();
+            var result = analyser.IsHand(HandBuilder.FullHouse());
 
             Assert.IsTrue(result);
 

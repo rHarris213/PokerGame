@@ -55,15 +55,7 @@ namespace CardGame
            _cardSuit = sentCardSuit;
         }
 
-        //public string Description
-        //{
-        //    get { return String.Format("{0} of {1}", Value, Suit); }
-        //}
-
-        //public override bool Equals(object obj)
-        //{
-        //    return base.Equals(obj);
-        //}
+      
 
       
     }

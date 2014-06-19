@@ -5,17 +5,12 @@ namespace CardGame.HandAnalysers
 {
     public class StraightAnalyser : IHandAnalyser 
     {
-        private readonly List<Card> _hand; 
-        public StraightAnalyser(List<Card> hand)
+        public bool IsHand(Hand hand)
         {
-            _hand = hand;
-        }
-
-        public bool IsHand()
-        {
+            
             int cardsChecked = 0;
             int? expectedCard = null;
-            foreach (var card in _hand.OrderBy(c => c.GetCardValue()))
+            foreach (var card in hand.GetCards().OrderBy(c => c.GetCardValue()))
             {
                 if (!expectedCard.HasValue)
                 {

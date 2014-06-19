@@ -5,18 +5,12 @@ namespace CardGame.HandAnalysers
 {
     public class OnePairAnalyser : IHandAnalyser
     {
-        private readonly List<Card> _hand; 
-        public OnePairAnalyser(List<Card> hand)
-        {
-            _hand = hand;
-        }
-
-        public bool IsHand()
+        public bool IsHand(Hand hand)
         {
             var numberOfPairs = 0;
             for (var i = 0; i < 15; i++)
             {
-                IEnumerable<Card> cardsOfSameValue = _hand.Where(obj => obj.GetCardValue() == i);
+                IEnumerable<Card> cardsOfSameValue = hand.GetCards().Where(obj => obj.GetCardValue() == i);
 
 
                 if (cardsOfSameValue.Count() == 2)

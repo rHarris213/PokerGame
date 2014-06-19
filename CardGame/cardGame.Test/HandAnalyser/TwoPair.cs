@@ -2,6 +2,7 @@
 using System.Linq;
 using CardGame;
 using CardGame.HandAnalysers;
+using cardGame.Test.Builders;
 using NUnit.Framework;
 
 namespace cardGame.Test.HandAnalyser
@@ -12,19 +13,10 @@ namespace cardGame.Test.HandAnalyser
         [Test]
         public void Two_Pairs_Should_Have_Two_Sets_Of_Cards_With_Same_Value()
         {
-            var twoPair = new List<Card>
-            {
-               
-                new Card(1, 2),
-                new Card(2, 3),
-                new Card(2, 2),
-                new Card(9, 1),
-                new Card(9, 1)
-            };
+       
+            var analyser = new TwoPairAnalyser();
 
-            var analyser = new TwoPairAnalyser(twoPair);
-
-            var result = analyser.IsHand();
+            var result = analyser.IsHand(HandBuilder.TwoPair());
 
             Assert.IsTrue(result);
 
@@ -34,19 +26,11 @@ namespace cardGame.Test.HandAnalyser
         [Test]
         public void Two_Pairs_Should_Not_Include_Three_Of_A_Kind()
         {
-            var twoPair = new List<Card>
-            {
-               
-                new Card(2, 2),
-                new Card(2, 3),
-                new Card(2, 2),
-                new Card(9, 1),
-                new Card(9, 1)
-            };
+           
 
-            var analyser = new TwoPairAnalyser(twoPair);
+            var analyser = new TwoPairAnalyser();
 
-            var result = analyser.IsHand();
+            var result = analyser.IsHand(HandBuilder.ThreeOfAKind());
 
             Assert.IsFalse(result);
 

@@ -2,6 +2,7 @@
 using System.Linq;
 using CardGame;
 using CardGame.HandAnalysers;
+using cardGame.Test.Builders;
 using NUnit.Framework;
 
 namespace cardGame.Test.HandAnalyser
@@ -12,19 +13,11 @@ namespace cardGame.Test.HandAnalyser
         [Test]
         public void Pair_Should_Include_Two_Cards_Of_The_Same_Value()
         {
-            var pair = new List<Card>
-            {
-               
-                new Card(2, 2),
-                new Card(2, 3),
-                new Card(3, 2),
-                new Card(4, 1),
-                new Card(5, 1)
-            };
+           
 
-            var analyser = new OnePairAnalyser(pair);
+            var analyser = new OnePairAnalyser();
 
-            var result = analyser.IsHand();
+            var result = analyser.IsHand(HandBuilder.OnePair());
 
             Assert.IsTrue(result);
 
@@ -34,19 +27,11 @@ namespace cardGame.Test.HandAnalyser
         [Test]
         public void Pair_Should_Not_Include_Multiple_Sets_Of_Two_Cards_Of_The_Same_Value()
         {
-            var pair = new List<Card>
-            {
-               
-                new Card(2, 2),
-                new Card(2, 3),
-                new Card(3, 2),
-                new Card(3, 1),
-                new Card(5, 1)
-            };
+           
 
-            var analyser = new OnePairAnalyser(pair);
+            var analyser = new OnePairAnalyser();
 
-            var result = analyser.IsHand();
+            var result = analyser.IsHand(HandBuilder.TwoPair());
 
             Assert.IsFalse(result);
 
@@ -56,19 +41,9 @@ namespace cardGame.Test.HandAnalyser
         [Test]
         public void Pair_Should_Not_Include_Three_Of_A_Kind_As_Pair()
         {
-            var onePair = new List<Card>
-            {
-               
-                new Card(2, 2),
-                new Card(3, 3),
-                new Card(3, 2),
-                new Card(3, 1),
-                new Card(5, 1)
-            };
+           var analyser = new OnePairAnalyser();
 
-            var analyser = new OnePairAnalyser(onePair);
-
-            var result = analyser.IsHand();
+            var result = analyser.IsHand(HandBuilder.ThreeOfAKind());
 
             Assert.IsFalse(result);
 

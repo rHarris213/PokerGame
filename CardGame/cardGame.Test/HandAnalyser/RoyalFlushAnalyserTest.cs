@@ -44,7 +44,7 @@ namespace cardGame.Test.HandAnalyser
             };
             var analyser = new RoyalFlushHandAnalyser();
             // act
-            var result = analyser.IsHand(HandBuilder.RandomHand());
+            var result = analyser.IsHand(HandBuilder.HighCardHand());
             // assert
             Assert.IsFalse(result);
         }
@@ -74,7 +74,7 @@ namespace cardGame.Test.HandAnalyser
             };
             var analyser = new RoyalFlushHandAnalyser();
             // act
-            var result = analyser.IsHand(HandBuilder.RandomHand());
+            var result = analyser.IsHand(HandBuilder.HighCardHand());
             // assert
             Assert.IsFalse(result);
         }

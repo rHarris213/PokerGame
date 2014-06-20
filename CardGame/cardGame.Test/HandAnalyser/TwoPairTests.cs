@@ -8,7 +8,7 @@ using NUnit.Framework;
 namespace cardGame.Test.HandAnalyser
 {
     [TestFixture]
-    class TwoPair
+    class TwoPairTests
     {
         [Test]
         public void Two_Pairs_Should_Have_Two_Sets_Of_Cards_With_Same_Value()

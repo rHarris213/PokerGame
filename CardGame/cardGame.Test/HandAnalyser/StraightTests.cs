@@ -11,19 +11,40 @@ namespace cardGame.Test.HandAnalyser
     [TestFixture]
     class StraightTests
     {
+        private StraightAnalyser _analyser;
 
         [Test]
         public void Straight_Should_Contain_Correct_Sequence_Of_Cards()
         {
             
 
-            var analyser = new StraightAnalyser();
+            _analyser = new StraightAnalyser();
 
-            var result = analyser.IsHand(HandBuilder.Straight());
+            var result = _analyser.IsHand(HandBuilder.Straight());
 
             Assert.IsTrue(result);
 
 
+        }
+
+        [Test]
+        public void Straight_Should_Not_Contain_Incorrect_Sequence_Of_Cards()
+        {
+            var analyser = new StraightAnalyser();
+
+            var result = analyser.IsHand(HandBuilder.HighCardHand());
+
+            Assert.IsFalse(result);
+        }
+
+        [Test]
+        public void Straight_Should_Not_Be_A_Straight_Flush()
+        {
+            var analyser = new StraightAnalyser();
+
+            var result = analyser.IsHand(HandBuilder.StraightFlush());
+
+            Assert.IsFalse(result);
         }
     }
 }

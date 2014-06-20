@@ -3,7 +3,6 @@ using System.Security.AccessControl;
 using System.Security.Cryptography.X509Certificates;
 using System.Threading;
 using CardGame;
-using CardGame.HandAnalysers;
 using cardGame.Test.Builders;
 using NUnit.Framework;
 
@@ -113,42 +112,6 @@ namespace cardGame.Test
             var evaluator = new Evaluator(PokerHandAnalysers.FiveCardPoker());
             var result = evaluator.DetermineWinner(hands);
             Assert.That(result.Equals(playerTwo));
-        }
-    }
-
-    internal class Evaluator
-    {
-        private readonly IList<IHandAnalyser> _analysers;
-
-        public Evaluator(IList<IHandAnalyser> analysers)
-        {
-            _analysers = analysers;
-        }
-        
-        public Hand DetermineWinner(IEnumerable<Hand> hands)
-        {
-            Hand bestHand = null;
-            
-            var highestScore = 0;
-
-            foreach (var hand in hands)
-            {
-                int handScore = _analysers.Count;
-
-                foreach (var analyser in _analysers)
-                {
-                    handScore--;
-                    if (!analyser.IsHand(hand)) continue;
-                    if (handScore > highestScore)
-                    {
-                        bestHand = hand;
-                        highestScore = handScore;
-
-                    }
-                    break;
-                }
-            }
-            return bestHand;
         }
     }
 }

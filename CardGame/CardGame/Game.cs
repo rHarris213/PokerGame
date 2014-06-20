@@ -14,19 +14,21 @@ namespace CardGame
             var aDeck = new Deck();
             var playerOne = new Hand();
             var playerTwo = new Hand();
+            
+            
             var poker = new GameRules();
             const int numberOfPlayers = 2;
-            bool gameWon = false;
-
-
-
-
+            var gameWon = false;
+            var pokerEvaluator = new Evaluator(PokerHandAnalysers.FiveCardPoker());
             aDeck.Shuffle();
             aDeck.Deal(playerOne);
             aDeck.Deal(playerTwo);
+
+
             
             
-           
+
+
             while (!gameWon)
             {
                 
@@ -49,14 +51,22 @@ namespace CardGame
                         OutputCards(playerOne.GetCards());
                         Console.WriteLine("===Player Two Hand===");
                         OutputCards(playerTwo.GetCards());
-
-                        if (poker.CompareCards(playerOne, playerTwo) == 0)
+                        var listOfHands = new List<Hand> { playerOne, playerTwo }; 
+                        var result = pokerEvaluator.DetermineWinner(listOfHands);
+                        if (result == playerOne)
                         {
-                            
-                        }else if (poker.CompareCards(playerOne, playerTwo) == 1)
+                            Console.WriteLine("Player Two");
+                        }else if (result == playerTwo)
                         {
-
+                            Console.WriteLine(playerTwo);
                         }
+                        else
+                        {
+                            Console.WriteLine("Draw");
+                        }
+
+                        Console.ReadKey();
+
                         //else if (//poker.CompareCards(player))
 
                         Console.WriteLine("D: Deal to Hand");

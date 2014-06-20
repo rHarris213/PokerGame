@@ -20,7 +20,7 @@ namespace cardGame.Test.Builders
             return hand;
         }
 
-        public static Hand RandomHand()
+        public static Hand HighCardHand()
         {
             var hand = new Hand();
             hand.AddCards(new List<Card>
@@ -29,7 +29,7 @@ namespace cardGame.Test.Builders
                 new Card(3, 1),
                 new Card(4, 2),
                 new Card(5, 1),
-                new Card(6, 1)
+                new Card(7, 1)
             });
 
             return hand;
@@ -160,7 +160,7 @@ namespace cardGame.Test.Builders
             {
                 new Card(2, 1),
                 new Card(3, 1),
-                new Card(4, 1),
+                new Card(4, 2),
                 new Card(5, 1),
                 new Card(6, 1)
             });
@@ -180,5 +180,34 @@ namespace cardGame.Test.Builders
             });
             return hand;
         }
+
+        public static Hand HighCardAce()
+        {
+            var hand = new Hand();
+            hand.AddCards(new List<Card>
+            {
+                new Card(14, 1),
+                new Card(4, 2),
+                new Card(8, 3),
+                new Card(5, 4),
+                new Card(3, 5)
+            });
+            return hand;
+        }
+        
+        public static Hand HighCardSeven()
+        {
+            var hand = new Hand();
+            hand.AddCards(new List<Card>
+            {
+                new Card(7, 1),
+                new Card(5, 2),
+                new Card(4, 3),
+                new Card(3, 4),
+                new Card(2, 5)
+            });
+            return hand;
+        }
+
     }
 }

@@ -1,46 +1,43 @@
+﻿using System;
 using System.Collections.Generic;
+using CardGame.HandAnalysers;
 
 namespace CardGame
 {
     public class Evaluator
     {
-        private List<Card> _hand = new List<Card>(); 
-        public Evaluator(List<Card> hand)
+        private readonly IList<IHandAnalyser> _analysers;
+
+        public Evaluator(IList<IHandAnalyser> analysers)
         {
-            _hand = hand;
+            _analysers = analysers;
         }
-
         
-
-        public int EvaluateHandScore()
+        public Hand DetermineWinner(IEnumerable<Hand> hands)
         {
-
-           
-           
-    
-            //var handAnalysers = new PokerHandAnalysers();
-
-            //var pokerHands = handAnalysers.GetList();
+            Hand bestHand = null;
             
+            var highestScore = 0;
 
-            //var handScore = pokerHands.Count;
-            //foreach (var handEval in pokerHands)
-            //{
-            //    var ishand = handEval.IsHand(_hand);
+            foreach (var hand in hands)
+            {
+                int handScore = _analysers.Count;
 
-            //    if (ishand)
-            //        return handScore;
+                foreach (var analyser in _analysers)
+                {
+                    handScore--;
+                    if (!analyser.IsHand(hand)) continue;
+                    if (handScore > highestScore)
+                    {
+                        bestHand = hand;
+                        highestScore = handScore;
 
-            //    handScore--;
-            //}
-
-            return 0;
+                    }
+                    break;
+                }
+            }
             
-           
-
-
-
-            
+            return bestHand;
         }
     }
 }

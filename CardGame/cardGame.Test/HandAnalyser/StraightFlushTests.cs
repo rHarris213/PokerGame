@@ -25,7 +25,7 @@ namespace cardGame.Test.HandAnalyser
         {
             var analyser = new StraightFlushAnalyser();
 
-            var result = analyser.IsHand(HandBuilder.RandomHand());
+            var result = analyser.IsHand(HandBuilder.HighCardHand());
 
             Assert.IsFalse(result);
         }

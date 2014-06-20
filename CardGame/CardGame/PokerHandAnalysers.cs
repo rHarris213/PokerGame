@@ -18,7 +18,7 @@ namespace CardGame
                 new FourOfAKindAnalyser(),
                 new FullHouseAnalyser(),
                 new FlushAnalyser(),
-                new StraightAnalyser(),
+                new StraightAnalyser(new FlushAnalyser()),
                 new ThreeOfAKindAnalyser(),
                 new TwoPairAnalyser(),
                 new OnePairAnalyser()

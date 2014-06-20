@@ -18,7 +18,7 @@ namespace cardGame.Test.HandAnalyser
         {
             
 
-            _analyser = new StraightAnalyser();
+            _analyser = new StraightAnalyser(new FlushAnalyser());
 
             var result = _analyser.IsHand(HandBuilder.Straight());
 
@@ -30,7 +30,7 @@ namespace cardGame.Test.HandAnalyser
         [Test]
         public void Straight_Should_Not_Contain_Incorrect_Sequence_Of_Cards()
         {
-            var analyser = new StraightAnalyser();
+            var analyser = new StraightAnalyser(new FlushAnalyser());
 
             var result = analyser.IsHand(HandBuilder.HighCardHand());
 
@@ -40,7 +40,7 @@ namespace cardGame.Test.HandAnalyser
         [Test]
         public void Straight_Should_Not_Be_A_Straight_Flush()
         {
-            var analyser = new StraightAnalyser();
+            var analyser = new StraightAnalyser(new FlushAnalyser());
 
             var result = analyser.IsHand(HandBuilder.StraightFlush());
 

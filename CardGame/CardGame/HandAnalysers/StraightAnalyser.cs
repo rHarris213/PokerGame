@@ -1,9 +1,17 @@
+using System.Collections.Generic;
 using System.Linq;
 
 namespace CardGame.HandAnalysers
 {
-    public class StraightAnalyser : IHandAnalyser 
+    public class StraightAnalyser : IHandAnalyser
     {
+        private IHandAnalyser _analyser;
+
+        public StraightAnalyser(FlushAnalyser analyser)
+        {
+            _analyser = analyser;
+        }
+
         public bool IsHand(Hand hand)
         {
             if (IsFlush(hand))
@@ -35,22 +43,18 @@ namespace CardGame.HandAnalysers
 
         private bool IsFlush(Hand hand)
         {
-            var analyser = new FlushAnalyser();
-
-            return analyser.IsHand(hand);
+            return _analyser.IsHand(hand);
         }
 
         private static bool IsAceLowStraight(Hand hand)
         {
-           
-            var cards2 = hand.GetCards();
-            cards2.Sort();
+            hand.GetCards().Sort();
 
-            return (cards2[0].GetCardValue() == 2
-                  && cards2[1].GetCardValue() == 3
-                  && cards2[2].GetCardValue() == 4
-                  && cards2[3].GetCardValue() == 5
-                  && cards2[4].GetCardValue() == 14);
+            return (hand.GetCards()[0].GetCardValue() == 2
+                  && hand.GetCards()[1].GetCardValue() == 3
+                  && hand.GetCards()[2].GetCardValue() == 4
+                  && hand.GetCards()[3].GetCardValue() == 5
+                  && hand.GetCards()[4].GetCardValue() == 14);
 
            
             

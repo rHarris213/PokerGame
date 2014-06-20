@@ -13,3 +13,9 @@
 \\INSURANCE\FileData\SiteHome\IT\RHarris\CurrentProjects\CardGamev1.2\CardGame\CardGame\bin\Debug\CardGame.exe
 \\INSURANCE\FileData\SiteHome\IT\RHarris\CurrentProjects\CardGamev1.2\CardGame\CardGame\bin\Debug\CardGame.pdb
 \\INSURANCE\FileData\SiteHome\IT\RHarris\CurrentProjects\CardGamev1.2\CardGame\CardGame\obj\Debug\CardGame.csprojResolveAssemblyReference.cache
+U:\CurrentProjects\CardGamev1.2\CardGame\CardGame\bin\Debug\CardGame.exe.config
+U:\CurrentProjects\CardGamev1.2\CardGame\CardGame\obj\Debug\CardGame.exe
+U:\CurrentProjects\CardGamev1.2\CardGame\CardGame\obj\Debug\CardGame.pdb
+U:\CurrentProjects\CardGamev1.2\CardGame\CardGame\obj\Debug\CardGame.csprojResolveAssemblyReference.cache
+U:\CurrentProjects\CardGamev1.2\CardGame\CardGame\bin\Debug\CardGame.exe
+U:\CurrentProjects\CardGamev1.2\CardGame\CardGame\bin\Debug\CardGame.pdb

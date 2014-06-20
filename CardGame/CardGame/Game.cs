@@ -51,14 +51,15 @@ namespace CardGame
                         OutputCards(playerOne.GetCards());
                         Console.WriteLine("===Player Two Hand===");
                         OutputCards(playerTwo.GetCards());
+
                         var listOfHands = new List<Hand> { playerOne, playerTwo }; 
                         var result = pokerEvaluator.DetermineWinner(listOfHands);
                         if (result == playerOne)
                         {
-                            Console.WriteLine("Player Two");
+                            Console.WriteLine("Player One Wins");
                         }else if (result == playerTwo)
                         {
-                            Console.WriteLine(playerTwo);
+                            Console.WriteLine("Player Two Wins");
                         }
                         else
                         {
@@ -143,17 +144,7 @@ namespace CardGame
         {
             int i = 1;
 
-            var outputForValue = "";
-
-            const int hearts = 0;
-            const int clubs = 1;
-            const int diamonds = 2;
-            const int spades = 3;
-
-            const int ace = 14;
-            const int king = 13;
-            const int queen = 12;
-            const int jack = 11;
+           
 
             foreach (var aCard in sentCards)
             {
@@ -164,43 +155,9 @@ namespace CardGame
                 
 
 
-                switch (cardNumberValue)
-                {
-                    case ace:
-                        outputForValue = "A ";
-                        break;
-                    case king:
-                        outputForValue = "K ";
-                        break;
-                    case queen:
-                        outputForValue = "Q ";
-                        break;
-                    case jack:
-                        outputForValue = "J ";
-                        break;
-                    default:
-                        outputForValue = cardNumberValue + " ";
-                        break;
-                }
+                
 
-                switch (cardSuitValue)
-                {
-                    case hearts:
-                        Console.WriteLine(i + ": "+ outputForValue + "H");
-                        break;
-                    case clubs:
-                        Console.WriteLine(i + ": "+ outputForValue + "C");
-                        break;
-                    case diamonds:
-                        Console.WriteLine(i + ": "+ outputForValue + "D");
-                        break;
-                    case spades:
-                        Console.WriteLine(i + ": "+ outputForValue + "S");
-                        break;
-                    default:
-                        break;
-
-                }
+                Console.WriteLine(cardNumberValue + " Of " + cardSuitValue);
 
                 i++;
             }

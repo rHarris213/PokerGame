@@ -10,11 +10,11 @@ namespace cardGame.Test.Builders
             var hand = new Hand();
             hand.AddCards(new List<Card>
             {
-                new Card(2, 1),
-                new Card(3, 1),
-                new Card(4, 1),
-                new Card(5, 1),
-                new Card(6, 1)
+                new Card(Value.Two, Suit.Clubs),
+                new Card(Value.Three, Suit.Clubs),
+                new Card(Value.Four, Suit.Clubs),
+                new Card(Value.Five, Suit.Clubs),
+                new Card(Value.Six, Suit.Clubs)
             });
 
             return hand;
@@ -25,11 +25,11 @@ namespace cardGame.Test.Builders
             var hand = new Hand();
             hand.AddCards(new List<Card>
             {
-                new Card(2, 1),
-                new Card(3, 1),
-                new Card(4, 2),
-                new Card(5, 1),
-                new Card(7, 1)
+                new Card(Value.Two, Suit.Clubs),
+                new Card(Value.Three, Suit.Clubs),
+                new Card(Value.Four, Suit.Clubs),
+                new Card(Value.Five, Suit.Clubs),
+                new Card(Value.Seven, Suit.Hearts)
             });
 
             return hand;
@@ -40,11 +40,11 @@ namespace cardGame.Test.Builders
             var hand = new Hand();
             hand.AddCards(new List<Card>
             {
-                new Card(2, 1),
-                new Card(3, 1),
-                new Card(4, 1),
-                new Card(5, 1),
-                new Card(14, 1)
+                new Card(Value.Two, Suit.Clubs),
+                new Card(Value.Three, Suit.Clubs),
+                new Card(Value.Four, Suit.Clubs),
+                new Card(Value.Five, Suit.Clubs),
+                new Card(Value.Ace, Suit.Clubs)
             });
 
             return hand;
@@ -55,11 +55,11 @@ namespace cardGame.Test.Builders
             var hand = new Hand();
             hand.AddCards(new List<Card>
             {
-                new Card(2, 1),
-                new Card(4, 1),
-                new Card(6, 1),
-                new Card(8, 1),
-                new Card(10, 1)
+                new Card(Value.Two, Suit.Clubs),
+                new Card(Value.Three, Suit.Clubs),
+                new Card(Value.Four, Suit.Clubs),
+                new Card(Value.Five, Suit.Clubs),
+                new Card(Value.Seven, Suit.Clubs)
             });
             return hand;
         }
@@ -69,27 +69,28 @@ namespace cardGame.Test.Builders
             var hand = new Hand();
             hand.AddCards(new List<Card>
             {
-                new Card(2, 1),
-                new Card(2, 2),
-                new Card(2, 3),
-                new Card(2, 4),
-                new Card(9, 1)
+                 new Card(Value.Seven, Suit.Clubs),
+                 new Card(Value.Seven, Suit.Clubs),
+                 new Card(Value.Seven, Suit.Clubs),
+                 new Card(Value.Seven, Suit.Clubs),
+                 new Card(Value.Eight, Suit.Diamonds)
             });
 
             return hand;
         }
 
-        public static Hand FullHouse()
+        public static Hand FullHouseLargeHand()
         {
             var hand = new Hand();
             hand.AddCards(new List<Card>
             {
-                new Card(1, 1),
-                new Card(2, 2),
-                new Card(2, 3),
-                new Card(9, 2),
-                new Card(9, 1),
-                new Card(9, 1)
+                 new Card(Value.Seven, Suit.Clubs),
+                 new Card(Value.Seven, Suit.Hearts),
+                 new Card(Value.Seven, Suit.Diamonds),
+                 new Card(Value.Two, Suit.Clubs),
+                 new Card(Value.Two, Suit.Diamonds),
+                 new Card(Value.King, Suit.Clubs),
+                
             });
             return hand;
         }
@@ -100,11 +101,11 @@ namespace cardGame.Test.Builders
             hand.AddCards(new List<Card>
             {
 
-                new Card(1, 2),
-                new Card(2, 3),
-                new Card(2, 2),
-                new Card(9, 1),
-                new Card(9, 1)
+                new Card(Value.Three, Suit.Clubs),
+                new Card(Value.Seven, Suit.Hearts),
+                new Card(Value.Seven, Suit.Diamonds),
+                new Card(Value.Two, Suit.Clubs),
+                new Card(Value.Two, Suit.Diamonds),
             });
             return hand;
         }
@@ -115,11 +116,11 @@ namespace cardGame.Test.Builders
             hand.AddCards(new List<Card>
             {
 
-                new Card(1, 2),
-                new Card(2, 3),
-                new Card(9, 2),
-                new Card(9, 1),
-                new Card(9, 1)
+                 new Card(Value.Seven, Suit.Clubs),
+                 new Card(Value.Seven, Suit.Hearts),
+                 new Card(Value.Seven, Suit.Diamonds),
+                 new Card(Value.Three, Suit.Clubs),
+                 new Card(Value.Two, Suit.Diamonds),
             });
             return hand;
         }
@@ -129,11 +130,11 @@ namespace cardGame.Test.Builders
             var hand = new Hand();
             hand.AddCards(new List<Card>
             {
-                new Card(10, 1),
-                new Card(11, 1),
-                new Card(12, 1),
-                new Card(13, 1),
-                new Card(14, 1)
+                 new Card(Value.Ten, Suit.Clubs),
+                 new Card(Value.Jack, Suit.Clubs),
+                 new Card(Value.Queen, Suit.Clubs),
+                 new Card(Value.King, Suit.Clubs),
+                 new Card(Value.Ace, Suit.Clubs),
             });
             return hand;
         }
@@ -144,11 +145,11 @@ namespace cardGame.Test.Builders
             hand.AddCards(new List<Card>
             {
 
-                new Card(2, 2),
-                new Card(2, 3),
-                new Card(3, 2),
-                new Card(4, 1),
-                new Card(5, 1)
+                 new Card(Value.Eight, Suit.Clubs),
+                 new Card(Value.Seven, Suit.Hearts),
+                 new Card(Value.Seven, Suit.Diamonds),
+                 new Card(Value.Jack, Suit.Clubs),
+                 new Card(Value.Two, Suit.Diamonds),
             });
             return hand;
         }
@@ -158,11 +159,11 @@ namespace cardGame.Test.Builders
             var hand = new Hand();
             hand.AddCards(new List<Card>
             {
-                new Card(2, 1),
-                new Card(3, 1),
-                new Card(4, 2),
-                new Card(5, 1),
-                new Card(6, 1)
+               new Card(Value.Seven, Suit.Clubs),
+               new Card(Value.Eight, Suit.Hearts),
+               new Card(Value.Nine, Suit.Diamonds),
+               new Card(Value.Ten, Suit.Clubs),
+               new Card(Value.Jack, Suit.Diamonds),
             });
             return hand;
         }
@@ -172,11 +173,11 @@ namespace cardGame.Test.Builders
             var hand = new Hand();
             hand.AddCards(new List<Card>
             {
-                new Card(2, 1),
-                new Card(2, 2),
-                new Card(2, 3),
-                new Card(2, 4),
-                new Card(2, 5)
+                 new Card(Value.Seven, Suit.Clubs),
+                 new Card(Value.Seven, Suit.Hearts),
+                 new Card(Value.Seven, Suit.Diamonds),
+                 new Card(Value.Seven, Suit.Spades),
+                 new Card(Value.Seven, Suit.Diamonds),
             });
             return hand;
         }
@@ -186,11 +187,11 @@ namespace cardGame.Test.Builders
             var hand = new Hand();
             hand.AddCards(new List<Card>
             {
-                new Card(14, 1),
-                new Card(4, 2),
-                new Card(8, 3),
-                new Card(5, 4),
-                new Card(3, 5)
+                 new Card(Value.Seven, Suit.Clubs),
+                 new Card(Value.Nine, Suit.Hearts),
+                 new Card(Value.Jack, Suit.Diamonds),
+                 new Card(Value.Four, Suit.Clubs),
+                 new Card(Value.Ace, Suit.Diamonds),
             });
             return hand;
         }
@@ -200,14 +201,44 @@ namespace cardGame.Test.Builders
             var hand = new Hand();
             hand.AddCards(new List<Card>
             {
-                new Card(7, 1),
-                new Card(5, 2),
-                new Card(4, 3),
-                new Card(3, 4),
-                new Card(2, 5)
+                new Card(Value.Two, Suit.Clubs),
+                 new Card(Value.Three, Suit.Hearts),
+                 new Card(Value.Four, Suit.Diamonds),
+                 new Card(Value.Five, Suit.Clubs),
+                 new Card(Value.Seven, Suit.Diamonds),
             });
             return hand;
         }
+
+        public static Hand AceHighStraightWithoutFlush()
+        {
+            var hand = new Hand();
+            hand .AddCards(new List<Card>
+            {
+                new Card(Value.Ten, Suit.Hearts),
+                new Card(Value.Jack,Suit.Hearts),
+                new Card(Value.Queen, Suit.Hearts),
+                new Card(Value.King, Suit.Hearts),
+                new Card(Value.Ace, Suit.Clubs)
+            });
+            return hand;
+        }
+
+        public static Hand AceHighFlushNoStraight()
+        {
+            var hand = new Hand();
+            hand.AddCards(new List<Card>
+            {
+                new Card(Value.Ten, Suit.Hearts),
+                new Card(Value.Jack, Suit.Hearts),
+                new Card(Value.Eight, Suit.Hearts),
+                new Card(Value.Queen, Suit.Hearts),
+                new Card(Value.Ace, Suit.Hearts)
+            });
+            return hand;
+        }
+
+       
 
     }
 }

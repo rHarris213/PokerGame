@@ -6,7 +6,7 @@ namespace CardGame.HandAnalysers
     {
         public bool IsHand(Hand hand)
         {
-            for (var i = 0; i < 15; i ++)
+            for (var i = Value.Two; i < Value.Ace; i ++)
             {
                 var fourMatchCheck = hand.GetCards().Where(obj => obj.GetCardValue() == i);
 
@@ -17,5 +17,7 @@ namespace CardGame.HandAnalysers
             }
             return false;
         }
+
+        
     }
 }

@@ -7,8 +7,8 @@ namespace CardGame.HandAnalysers
     {
         public bool IsHand(Hand hand)
         {
-            int? suit = null;
-            int expectedCard = 10;
+            Suit? suit = null;
+            var expectedCard = Value.Ten;
             foreach (var card in hand.GetCards().OrderBy(c => c.GetCardValue()))
             {
                 if ((suit.HasValue && suit.Value != card.GetCardSuit()) || (card.GetCardValue() != expectedCard))

@@ -10,8 +10,8 @@ namespace CardGame.HandAnalysers
         public bool IsHand(Hand hand)
         {
             
-            int? suit = null;
-            int? expectedCard = null;
+            Suit? suit = null;
+            Value? expectedCard = null;
             int cardsChecked = 0;
 
             foreach (var card in hand.GetCards().OrderBy(c => c.GetCardValue()))
@@ -20,7 +20,7 @@ namespace CardGame.HandAnalysers
                 {
                     expectedCard = card.GetCardValue();
                 }
-                if (cardsChecked == 4 && expectedCard == 6 && card.GetCardValue() == 14)
+                if (cardsChecked == 4 && expectedCard == Value.Six && card.GetCardValue() == Value.Ace)
                 {
                     return true;
                 }

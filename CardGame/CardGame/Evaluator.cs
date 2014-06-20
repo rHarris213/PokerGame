@@ -21,7 +21,7 @@ namespace CardGame
 
             foreach (var hand in hands)
             {
-                int handScore = _analysers.Count;
+                int handScore = _analysers.Count + 1;
 
                 foreach (var analyser in _analysers)
                 {
@@ -34,6 +34,10 @@ namespace CardGame
 
                     }
                     break;
+                }
+                if (bestHand == null)
+                {
+                    bestHand = hand;
                 }
             }
             

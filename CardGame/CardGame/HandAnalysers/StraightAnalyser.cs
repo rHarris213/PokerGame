@@ -50,11 +50,11 @@ namespace CardGame.HandAnalysers
         {
             hand.GetCards().Sort();
 
-            return (hand.GetCards()[0].GetCardValue() == 2
-                  && hand.GetCards()[1].GetCardValue() == 3
-                  && hand.GetCards()[2].GetCardValue() == 4
-                  && hand.GetCards()[3].GetCardValue() == 5
-                  && hand.GetCards()[4].GetCardValue() == 14);
+            return (hand.GetCards()[0].GetCardValue() == Value.Two
+                  && hand.GetCards()[1].GetCardValue() == Value.Three
+                  && hand.GetCards()[2].GetCardValue() == Value.Four
+                  && hand.GetCards()[3].GetCardValue() == Value.Five
+                  && hand.GetCards()[4].GetCardValue() == Value.Ace);
 
            
             

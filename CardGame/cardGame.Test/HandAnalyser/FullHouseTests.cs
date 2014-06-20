@@ -16,7 +16,7 @@ namespace cardGame.Test.HandAnalyser
         {
             var analyser = new FullHouseAnalyser();
 
-            var result = analyser.IsHand(HandBuilder.FullHouse());
+            var result = analyser.IsHand(HandBuilder.FullHouseLargeHand());
 
             Assert.IsTrue(result);
         }

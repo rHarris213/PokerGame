@@ -11,7 +11,7 @@ namespace CardGame.HandAnalysers
         {
            
 
-            for (var i = 0; i < 15; i++)
+            for (var i = Value.Two; i < Value.Ace; i++)
             {
                 IEnumerable<Card> cardsOfSameValue = hand.GetCards().Where(obj => obj.GetCardValue() == i);
 

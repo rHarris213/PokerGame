@@ -11,52 +11,21 @@ namespace cardGame.Test
     {
         
 
-       [TestCase]
-        public void NumberOfSpadesTest()
-        {
-            var aDeck = new Deck();
+      
 
-            const int name = 0;
-
-            var actualNumberOfCards = aDeck.Cards.Count(x => x.GetCardSuit() == name);
-            Assert.AreEqual(actualNumberOfCards, 13);
-
-        }
-
-        [TestCase(0)]
-        [TestCase(1)]
-        [TestCase(2)]
-        [TestCase(3)]
-        public void NumberOfDiamondsTest(int suit)
+        [TestCase(Suit.Clubs)]
+        [TestCase(Suit.Diamonds)]
+        [TestCase(Suit.Hearts)]
+        [TestCase(Suit.Spades)]
+        public void Suits_Should_Have_13_Cards(Suit suit)
         {
             var aDeck = new Deck();
 
             var i = aDeck.Cards.Count(x => x.GetCardSuit() == suit);
-            Assert.AreEqual(i, 13);
+            Assert.AreEqual(i,13);
 
         }
-        [TestCase]
-        public void NumberOfClubsTest()
-        {
-            var aDeck = new Deck();
-
-            const int name = 1;
-
-            int i = aDeck.Cards.Count(x => x.GetCardSuit() == name);
-            Assert.AreEqual(i, 13);
-
-        }
-        [TestCase]
-        public void NumberOfHeartsTest()
-        {
-            var aDeck = new Deck();
-
-            const int name = 2;
-
-            int i = aDeck.Cards.Count(x => x.GetCardSuit() == name);
-            Assert.AreEqual(i, 13);
-
-        }
+        
         
         [TestCase]
         public void No_Repeating_Cards()
@@ -69,12 +38,12 @@ namespace cardGame.Test
         }
 
         [TestCase]
-        public void Card_Suit_Is_A_Number_That_Returns()
+        public void Card_Suit_Is_A_Enum_That_Returns()
         {
 
-            var aDeck = new Deck();
+            var fiveOfHearts = new Card(Value.Five, Suit.Hearts);
 
-            Assert.AreEqual(aDeck.GetCards()[0].GetCardSuit(), 0);
+            Assert.AreEqual(fiveOfHearts.GetCardSuit(), Suit.Hearts);
 
         }
      
@@ -92,26 +61,13 @@ namespace cardGame.Test
             Assert.AreEqual(aHand.GetLength(), 5);
 
         }
-        [TestCase]
-        public void Card_With_Invalid_Suit_Value_Given_Default_Name()
-        {
-
-            var aHand = new Hand();
-            aHand.TakeCards(new Card(12,12));
-
-            
-
-
-
-            Assert.AreEqual(aHand.GetCards()[0].GetCardSuit(), 12);
-
-        }
+        
         [TestCase]
         public void Write_Cards()
         {
 
             var aHand = new Hand();
-            aHand.TakeCards(new Card(12, 12));
+            aHand.TakeCards(new Card(Value.Ace, Suit.Spades));
            
 
             

@@ -42,27 +42,32 @@ namespace cardGame.Test
             Assert.That(result.Equals(playerSix));
         }
 
+        //public Hand GetHand1()
+
         [Test]
         public void Evaluator_Should_Determine_A_Winner()
         {
-            //arrange
-            //act
-            //var royalFlush = new List<Card>
-            //{
-
-            //    new Card(14, 1),
-            //    new Card(13, 1),
-            //    new Card(12, 1),
-            //    new Card(11, 1),
-            //    new Card(10, 1)
-            //};
-            //var result = evaluator.EvaluateHandScore(royalFlush);
-            //assert
             
-            var playerOne = HandBuilder.RoyalFlush();
-            var playerTwo = HandBuilder.ThreeOfAKind();
 
-            var hands = new List<Hand> {playerOne, playerTwo};
+            var playerOne = new Hand();
+            playerOne.AddCard(Value.Nine,Suit.Spades);
+            playerOne.AddCard(Value.Four, Suit.Spades);
+            playerOne.AddCard(Value.Five, Suit.Spades);
+            playerOne.AddCard(Value.Four, Suit.Diamonds);
+            playerOne.AddCard(Value.Queen, Suit.Diamonds);
+
+            var playerTwo = new Hand();
+            playerTwo.AddCard(Value.Ten, Suit.Diamonds);
+            playerTwo.AddCard(Value.Six, Suit.Diamonds);
+            playerTwo.AddCard(Value.Seven, Suit.Hearts);
+            playerTwo.AddCard(Value.Two, Suit.Clubs);
+            playerTwo.AddCard(Value.Eight, Suit.Clubs);
+
+
+            //var playerOne = HandBuilder.RoyalFlush();
+            //var playerTwo = HandBuilder.ThreeOfAKind();
+
+            var hands = new List<Hand> {playerOne,playerTwo};
 
 
             var evaluator = new Evaluator(PokerHandAnalysers.FiveCardPoker());

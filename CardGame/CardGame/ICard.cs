@@ -1,8 +1,8 @@
-namespace cardGame.Test
+namespace CardGame
 {
     public interface ICard
     {
-        int GetCardValue();
-        int GetCardSuit();
+        Value GetCardValue();
+        Suit GetCardSuit();
     }
 }

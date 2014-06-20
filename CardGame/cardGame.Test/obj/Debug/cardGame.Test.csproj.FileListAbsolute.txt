@@ -22,3 +22,11 @@
 \\INSURANCE\FileData\SiteHome\IT\RHarris\CurrentProjects\CardGamev1.2\CardGame\cardGame.Test\bin\Debug\nunit.framework.dll
 \\INSURANCE\FileData\SiteHome\IT\RHarris\CurrentProjects\CardGamev1.2\CardGame\cardGame.Test\bin\Debug\CardGame.pdb
 \\INSURANCE\FileData\SiteHome\IT\RHarris\CurrentProjects\CardGamev1.2\CardGame\cardGame.Test\obj\Debug\cardGame.Test.pdb
+U:\CurrentProjects\CardGamev1.2\CardGame\cardGame.Test\bin\Debug\cardGame.Test.dll
+U:\CurrentProjects\CardGamev1.2\CardGame\cardGame.Test\bin\Debug\cardGame.Test.pdb
+U:\CurrentProjects\CardGamev1.2\CardGame\cardGame.Test\bin\Debug\CardGame.exe
+U:\CurrentProjects\CardGamev1.2\CardGame\cardGame.Test\bin\Debug\nunit.framework.dll
+U:\CurrentProjects\CardGamev1.2\CardGame\cardGame.Test\bin\Debug\CardGame.pdb
+U:\CurrentProjects\CardGamev1.2\CardGame\cardGame.Test\obj\Debug\cardGame.Test.csprojResolveAssemblyReference.cache
+U:\CurrentProjects\CardGamev1.2\CardGame\cardGame.Test\obj\Debug\cardGame.Test.dll
+U:\CurrentProjects\CardGamev1.2\CardGame\cardGame.Test\obj\Debug\cardGame.Test.pdb

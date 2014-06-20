@@ -6,7 +6,7 @@ namespace CardGame.HandAnalysers
     {
         public bool IsHand(Hand hand)
         {
-            int? suit = null;
+            Suit? suit = null;
             foreach (var card in hand.GetCards())
             {
                 if (suit.HasValue && suit != card.GetCardSuit())

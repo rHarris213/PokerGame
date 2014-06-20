@@ -11,11 +11,11 @@ namespace cardGame.Test
     [TestFixture]
     class CardTests
     {
-        [TestCase(0,0)]
-        [TestCase(3,5)]
-        [TestCase(100,20)]
-        [TestCase(41,41)]
-        public void Created_Card_Will_Return_Correct_Suit_And_Value(int testSuitValue, int testCardValue)
+        [TestCase(Value.Ace,Suit.Hearts)]
+        [TestCase(Value.Three, Suit.Clubs)]
+        [TestCase(Value.Four,Suit.Diamonds)]
+        [TestCase(Value.Jack, Suit.Spades)]
+        public void Created_Card_Will_Return_Correct_Suit_And_Value(Value testCardValue, Suit testSuitValue)
         {
             var aCard = new Card(testCardValue,testSuitValue);
 

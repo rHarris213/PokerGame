@@ -29,11 +29,10 @@ namespace CardGame
             {
                 for (var i = 0; i < 13; i++)
                 {
-                   
-                            Cards.Add(new Card(i + 2, j));
-                           
-                       
+
+                    Cards.Add(new Card((Value)i, (Suit)j));
                     
+
                 }
             }
         }

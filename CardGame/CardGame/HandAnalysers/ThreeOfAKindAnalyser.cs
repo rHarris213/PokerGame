@@ -18,6 +18,7 @@ namespace CardGame.HandAnalysers
 
                 if (cardsOfSameValue.Count() == 3)
                 {
+                    hand.SetRank(Rank.ThreeOfAKind);
                     return true;
 
                 }

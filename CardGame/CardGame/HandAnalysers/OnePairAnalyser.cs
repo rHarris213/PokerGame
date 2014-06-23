@@ -10,7 +10,7 @@ namespace CardGame.HandAnalysers
             var numberOfPairs = 0;
             for (var i = Value.Two; i < Value.Ace; i++)
             {
-                IEnumerable<Card> cardsOfSameValue = hand.GetCards().Where(obj => obj.GetCardValue() == i);
+                var cardsOfSameValue = hand.GetCards().Where(obj => obj.GetCardValue() == i);
 
 
                 if (cardsOfSameValue.Count() == 2)
@@ -21,6 +21,7 @@ namespace CardGame.HandAnalysers
             }
             if (numberOfPairs == 1)
             {
+                hand.SetRank(Rank.Pair);
                 return true;   
             }
             return false;

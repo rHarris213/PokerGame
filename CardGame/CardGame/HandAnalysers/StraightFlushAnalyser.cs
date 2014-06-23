@@ -22,6 +22,7 @@ namespace CardGame.HandAnalysers
                 }
                 if (cardsChecked == 4 && expectedCard == Value.Six && card.GetCardValue() == Value.Ace)
                 {
+                    hand.SetRank(Rank.StraightFlush);
                     return true;
                 }
                
@@ -34,6 +35,7 @@ namespace CardGame.HandAnalysers
                 expectedCard ++;
                 cardsChecked++;
             }
+            hand.SetRank(Rank.StraightFlush);
             return true;
         }
     }

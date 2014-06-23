@@ -18,6 +18,8 @@ namespace CardGame.HandAnalysers
                 expectedCard++;
                 suit = card.GetCardSuit();
             }
+            hand.SetRank(Rank.RoyalFlush);
+
             return true;
         }
     }

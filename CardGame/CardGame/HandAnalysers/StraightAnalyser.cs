@@ -38,6 +38,7 @@ namespace CardGame.HandAnalysers
                 }
                 expectedNextCardValue++;
             }
+            hand.SetRank(Rank.Straight);
             return true;
         }
 

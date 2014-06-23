@@ -19,6 +19,7 @@ namespace CardGame.HandAnalysers
                     numberOfPairs++;
                     if (numberOfPairs == 2)
                     {
+                        hand.SetRank(Rank.TwoPair);
                         return true;
                     }
                 }

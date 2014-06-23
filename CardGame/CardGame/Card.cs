@@ -15,8 +15,8 @@ namespace CardGame
     public enum Value
     {
         
-        Two,
-        Three,
+        Two = 2,
+        Three = 3,
         Four,
         Five,
         Six,

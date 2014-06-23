@@ -5,7 +5,7 @@ namespace cardGame.Test.Builders
 {
     public static class HandBuilder
     {
-        public static Hand StraightFlush()
+        public static Hand StraightFlushLow()
         {
             var hand = new Hand();
             hand.AddCards(new List<Card>
@@ -15,6 +15,21 @@ namespace cardGame.Test.Builders
                 new Card(Value.Four, Suit.Clubs),
                 new Card(Value.Five, Suit.Clubs),
                 new Card(Value.Six, Suit.Clubs)
+            });
+
+            return hand;
+        }
+
+        public static Hand StraightFlushHigh()
+        {
+            var hand = new Hand();
+            hand.AddCards(new List<Card>
+            {
+                new Card(Value.Nine, Suit.Clubs),
+                new Card(Value.Ten, Suit.Clubs),
+                new Card(Value.Jack, Suit.Clubs),
+                new Card(Value.Queen, Suit.Clubs),
+                new Card(Value.King, Suit.Clubs)
             });
 
             return hand;

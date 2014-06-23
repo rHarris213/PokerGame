@@ -47,25 +47,8 @@ namespace cardGame.Test
         [Test]
         public void Evaluator_Should_Determine_A_Winner()
         {
-            
-
-            var playerOne = new Hand();
-            playerOne.AddCard(Value.Nine,Suit.Spades);
-            playerOne.AddCard(Value.Four, Suit.Spades);
-            playerOne.AddCard(Value.Five, Suit.Spades);
-            playerOne.AddCard(Value.Four, Suit.Diamonds);
-            playerOne.AddCard(Value.Queen, Suit.Diamonds);
-
-            var playerTwo = new Hand();
-            playerTwo.AddCard(Value.Ten, Suit.Diamonds);
-            playerTwo.AddCard(Value.Six, Suit.Diamonds);
-            playerTwo.AddCard(Value.Seven, Suit.Hearts);
-            playerTwo.AddCard(Value.Two, Suit.Clubs);
-            playerTwo.AddCard(Value.Eight, Suit.Clubs);
-
-
-            //var playerOne = HandBuilder.RoyalFlush();
-            //var playerTwo = HandBuilder.ThreeOfAKind();
+            var playerOne = HandBuilder.RoyalFlush();
+            var playerTwo = HandBuilder.ThreeOfAKind();
 
             var hands = new List<Hand> {playerOne,playerTwo};
 
@@ -74,6 +57,8 @@ namespace cardGame.Test
             var result = evaluator.DetermineWinner(hands);
             Assert.That(result.Equals(playerOne));
         }
+
+        
 
         [Test]
         public void Evaluator_Should_Not_Allow_A_Lower_Ranked_Card_Set_Win()
@@ -108,7 +93,7 @@ namespace cardGame.Test
         {
             
 
-            var playerOne = HandBuilder.ThreeOfAKind();
+            var playerOne = HandBuilder.RoyalFlush();
             var playerTwo = HandBuilder.RoyalFlush();
 
             var hands = new List<Hand> { playerOne, playerTwo };

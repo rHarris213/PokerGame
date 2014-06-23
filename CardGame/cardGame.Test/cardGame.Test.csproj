@@ -61,6 +61,7 @@
     <Compile Include="ICardTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TestClass.cs" />
+    <Compile Include="TieBreakers\StraightFlushTieTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\CardGame\CardGame.csproj">

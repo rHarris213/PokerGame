@@ -26,6 +26,7 @@ namespace CardGame.HandAnalysers
                 }
                 if (threeOfAKind && pair)
                 {
+                    hand.SetRank(Rank.FullHouse);
                     return true;
                 }
             }

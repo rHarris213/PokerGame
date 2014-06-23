@@ -15,7 +15,7 @@ namespace cardGame.Test.HandAnalyser
         {
             var analyser = new StraightFlushAnalyser();
 
-            var result = analyser.IsHand(HandBuilder.StraightFlush());
+            var result = analyser.IsHand(HandBuilder.StraightFlushLow());
 
             Assert.IsTrue(result);
         }
@@ -37,7 +37,7 @@ namespace cardGame.Test.HandAnalyser
 
             var analyser = new StraightFlushAnalyser();
 
-            var result = analyser.IsHand(HandBuilder.StraightFlush());
+            var result = analyser.IsHand(HandBuilder.StraightFlushLow());
 
             Assert.IsTrue(result);
 

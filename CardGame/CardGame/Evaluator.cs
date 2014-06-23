@@ -40,7 +40,7 @@ namespace CardGame
                     bestHand = hand;
                 }
             }
-            
+
             return bestHand;
         }
     }

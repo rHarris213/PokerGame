@@ -12,6 +12,7 @@ namespace CardGame.HandAnalysers
 
                 if (fourMatchCheck.Count() == 4)
                 {
+                    hand.SetRank(Rank.FourOfAKind);
                     return true;
                 }
             }

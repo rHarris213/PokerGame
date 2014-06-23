@@ -1,14 +1,34 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace CardGame
 {
+
+    public enum Rank
+    {
+        HighCard = 1,
+        Pair,
+        TwoPair,
+        ThreeOfAKind,
+        Straight,
+        Flush,
+        FullHouse,
+        FourOfAKind,
+        StraightFlush,
+        RoyalFlush
+    };
+
     public class Hand
     {
         readonly List<Card> _cards = new List<Card>();
+        private Rank _rank;
+
+        
+
 
         public void AddCards(IList<Card> cards)
         {
@@ -24,6 +44,15 @@ namespace CardGame
         public void TakeCards(Card sentCard)
         {
             _cards.Add(sentCard);
+        }
+
+        public void SetRank(Rank newRank)
+        {
+            _rank = newRank;
+        }
+        public Rank GetRank()
+        {
+            return _rank;
         }
 
         public void Show()

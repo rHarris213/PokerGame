@@ -42,7 +42,7 @@ namespace cardGame.Test.HandAnalyser
         {
             var analyser = new StraightAnalyser(new FlushAnalyser());
 
-            var result = analyser.IsHand(HandBuilder.StraightFlush());
+            var result = analyser.IsHand(HandBuilder.StraightFlushLow());
 
             Assert.IsFalse(result);
         }

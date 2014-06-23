@@ -15,6 +15,7 @@ namespace CardGame.HandAnalysers
                 }
                 suit = card.GetCardSuit();
             }
+            hand.SetRank(Rank.Flush);
             return true;
         }
     }

@@ -105,7 +105,7 @@ namespace CardGame
                                 {
 
                                 }
-                                for (int j = 0; j < cardsToReturn; j++)
+                                for (var j = 0; j < cardsToReturn; j++)
                                 {
                                     Console.WriteLine(j);
                                 }

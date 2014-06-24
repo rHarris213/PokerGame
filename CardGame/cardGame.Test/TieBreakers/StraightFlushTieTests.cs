@@ -1,10 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Linq;
 using CardGame;
 using cardGame.Test.Builders;
+using cardGame.Test.HandAnalyser;
 using NUnit.Framework;
 
 namespace cardGame.Test.TieBreakers
@@ -31,7 +28,27 @@ namespace cardGame.Test.TieBreakers
         [Test]
         public void Straight_Flush_Tie_Breaker_Should_Not_Consider_Ace_Low_Straight_As_High()
         {
+            var playerOne = HandBuilder.StraightFlushWithAceLow();
+            var playerTwo = HandBuilder.StraightFlushHigh();
+            //act 
 
+            var bestHand = StraightFlushTieBreak(playerOne, playerTwo);
+
+            //assert
+            Assert.That(bestHand.Equals(playerTwo));
+
+        }
+
+        [Test]
+        public void Straight_Flush_Tie_Breaker_Should_Identify_A_Exact_Draw()
+        {
+
+            var playerOne = HandBuilder.StraightFlushHigh();
+            var playerTwo = HandBuilder.StraightFlushHigh();
+
+            var bestHand = StraightFlushTieBreak(playerOne, playerTwo);
+            
+            Assert.IsNull(bestHand);
         }
 
         private Hand StraightFlushTieBreak(Hand playerOne, Hand playerTwo)
@@ -39,22 +56,9 @@ namespace cardGame.Test.TieBreakers
             Hand bestHand = null;
            
 
-            var playerOneHighCard = playerOne.GetCards()[0].GetCardValue();
-            var playerOneSecondHighCard = playerOne.GetCards()[0].GetCardValue();
-
-            var playerTwoHighCard = playerTwo.GetCards()[0].GetCardValue();
-            var playerTwoSecondHighCard = playerTwo.GetCards()[0].GetCardValue();
-
-            if (playerOneHighCard == Value.Ace && playerOneSecondHighCard == Value.Five)
-            {
-                playerOneHighCard = Value.Five;
-            }
-
-            if (playerTwoHighCard == Value.Ace && playerTwoSecondHighCard == Value.Five)
-            {
-                playerTwoHighCard = Value.Five;
-            }
-
+            var playerOneHighCard = FindHighestCard(playerOne);
+            var playerTwoHighCard = FindHighestCard(playerTwo);
+       
             if (playerOneHighCard > playerTwoHighCard)
             {
                 bestHand = playerOne;
@@ -62,15 +66,30 @@ namespace cardGame.Test.TieBreakers
             {
                 bestHand = playerTwo;
             }
-            else
-            {
-                bestHand = null;
-            }
+          
+
 
             return bestHand;
 
-            return bestHand;
+           
         }
 
+        private Value FindHighestCard(Hand hand)
+        {
+
+            var sortedHand = hand.GetCards().OrderByDescending(c => c.GetCardValue()).ToList();
+
+            var highCardValue = sortedHand[0].GetCardValue();
+            var secondHighestCardValue = sortedHand[1].GetCardValue();
+
+            if (highCardValue == Value.Ace && secondHighestCardValue == Value.Five)
+            {
+                return Value.Five;
+            }
+
+            return highCardValue;
+        }
+
+       
     }
 }

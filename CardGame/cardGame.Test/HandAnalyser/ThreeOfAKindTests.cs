@@ -31,7 +31,7 @@ namespace cardGame.Test.HandAnalyser
           
             var analyser = new ThreeOfAKindAnalyser();
 
-            var result = analyser.IsHand(HandBuilder.FourOfAKind());
+            var result = analyser.IsHand(HandBuilder.FourOfAKindSevens());
 
             Assert.IsFalse(result);
 

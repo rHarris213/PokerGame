@@ -79,16 +79,61 @@ namespace cardGame.Test.Builders
             return hand;
         }
 
-        public static Hand FourOfAKind()
+        public static Hand FourOfAKindSevens()
         {
             var hand = new Hand();
             hand.AddCards(new List<Card>
             {
                  new Card(Value.Seven, Suit.Clubs),
-                 new Card(Value.Seven, Suit.Clubs),
-                 new Card(Value.Seven, Suit.Clubs),
-                 new Card(Value.Seven, Suit.Clubs),
+                 new Card(Value.Seven, Suit.Hearts),
+                 new Card(Value.Seven, Suit.Diamonds),
+                 new Card(Value.Seven, Suit.Spades),
                  new Card(Value.Eight, Suit.Diamonds)
+            });
+
+            return hand;
+        }
+
+        public static Hand FourOfAKindKings()
+        {
+            var hand = new Hand();
+            hand.AddCards(new List<Card>
+            {
+                 new Card(Value.King, Suit.Clubs),
+                 new Card(Value.King, Suit.Hearts),
+                 new Card(Value.King, Suit.Diamonds),
+                 new Card(Value.King, Suit.Spades),
+                 new Card(Value.Eight, Suit.Diamonds)
+            });
+
+            return hand;
+        }
+
+        public static Hand FourOfAKindKingsHighKicker()
+        {
+            var hand = new Hand();
+            hand.AddCards(new List<Card>
+            {
+                 new Card(Value.King, Suit.Clubs),
+                 new Card(Value.King, Suit.Hearts),
+                 new Card(Value.King, Suit.Diamonds),
+                 new Card(Value.King, Suit.Spades),
+                 new Card(Value.Queen, Suit.Diamonds)
+            });
+
+            return hand;
+        }
+
+        public static Hand FourOfAKindKingsLowKicker()
+        {
+            var hand = new Hand();
+            hand.AddCards(new List<Card>
+            {
+                 new Card(Value.King, Suit.Clubs),
+                 new Card(Value.King, Suit.Hearts),
+                 new Card(Value.King, Suit.Diamonds),
+                 new Card(Value.King, Suit.Spades),
+                 new Card(Value.Two,  Suit.Diamonds)
             });
 
             return hand;

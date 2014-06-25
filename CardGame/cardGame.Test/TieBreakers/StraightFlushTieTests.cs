@@ -1,7 +1,6 @@
 ﻿using System.Linq;
 using CardGame;
 using cardGame.Test.Builders;
-using cardGame.Test.HandAnalyser;
 using NUnit.Framework;
 
 namespace cardGame.Test.TieBreakers
@@ -79,15 +78,15 @@ namespace cardGame.Test.TieBreakers
 
             var sortedHand = hand.GetCards().OrderByDescending(c => c.GetCardValue()).ToList();
 
-            var highCardValue = sortedHand[0].GetCardValue();
+            var highestCardValue = sortedHand[0].GetCardValue();
             var secondHighestCardValue = sortedHand[1].GetCardValue();
 
-            if (highCardValue == Value.Ace && secondHighestCardValue == Value.Five)
+            if (highestCardValue == Value.Ace && secondHighestCardValue == Value.Five)
             {
-                return Value.Five;
+                highestCardValue = Value.Five;
             }
 
-            return highCardValue;
+            return highestCardValue;
         }
 
        

@@ -88,7 +88,7 @@ namespace cardGame.Test
             Assert.That(result.Equals(playerTwo));
         }
 
-        [Test]
+        
         public void Evaluator_Should_Identify_A_Draw()
         {
             
@@ -101,7 +101,7 @@ namespace cardGame.Test
 
             var evaluator = new Evaluator(PokerHandAnalysers.FiveCardPoker());
             var result = evaluator.DetermineWinner(hands);
-            Assert.That(result.Equals(playerTwo));
+            Assert.IsNull(result);
         }
     }
 }

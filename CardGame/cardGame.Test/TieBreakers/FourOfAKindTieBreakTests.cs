@@ -76,7 +76,7 @@ namespace cardGame.Test.TieBreakers
         private static Value GetKickerCardValue(Hand handOne)
         {
             var handOneKickerValue = Value.Two;
-            for (var i = Value.Two; i < Value.Ace; i++)
+            for (var i = Value.Two; i <= Value.Ace; i++)
             {
                 var cardValue = handOne.GetCards().Where(obj => obj.GetCardValue() == i);
 
@@ -91,7 +91,7 @@ namespace cardGame.Test.TieBreakers
 
         private static Value IdentifyFourOfAKindCardValue(Hand hand)
         {
-            for (var i = Value.Two; i < Value.Ace; i++)
+            for (var i = Value.Two; i <= Value.Ace; i++)
             {
                 var cardValue = hand.GetCards().Where(obj => obj.GetCardValue() == i);
 

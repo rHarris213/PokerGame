@@ -17,7 +17,7 @@ namespace cardGame.Test.HandAnalyser
             
             var analyser = new FlushAnalyser();
 
-            var result = analyser.IsHand(HandBuilder.Flush());
+            var result = analyser.IsHand(HandBuilder.FlushSevenHigh());
 
             Assert.IsTrue(result);
 

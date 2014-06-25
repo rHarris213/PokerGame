@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Configuration;
 using CardGame;
 
 namespace cardGame.Test.Builders
@@ -65,7 +66,7 @@ namespace cardGame.Test.Builders
             return hand;
         }
 
-        public static Hand Flush()
+        public static Hand FlushSevenHigh()
         {
             var hand = new Hand();
             hand.AddCards(new List<Card>
@@ -75,6 +76,20 @@ namespace cardGame.Test.Builders
                 new Card(Value.Four, Suit.Clubs),
                 new Card(Value.Five, Suit.Clubs),
                 new Card(Value.Seven, Suit.Clubs)
+            });
+            return hand;
+        }
+
+        public static Hand FlushAceHighTwoLow()
+        {
+            var hand = new Hand();
+            hand.AddCards(new List<Card>
+            {
+                new Card(Value.Two, Suit.Clubs),
+                new Card(Value.Jack, Suit.Clubs),
+                new Card(Value.Queen, Suit.Clubs),
+                new Card(Value.King, Suit.Clubs),
+                new Card(Value.Ace, Suit.Clubs)
             });
             return hand;
         }
@@ -150,6 +165,70 @@ namespace cardGame.Test.Builders
                  new Card(Value.Two, Suit.Clubs),
                  new Card(Value.Two, Suit.Diamonds),
                  new Card(Value.King, Suit.Clubs),
+                
+            });
+            return hand;
+        }
+
+        public static Hand FullHouseThreeAces()
+        {
+            var hand = new Hand();
+            hand.AddCards(new List<Card>
+            {
+                 new Card(Value.Ace, Suit.Clubs),
+                 new Card(Value.Ace, Suit.Hearts),
+                 new Card(Value.Ace, Suit.Diamonds),
+                 new Card(Value.Two, Suit.Clubs),
+                 new Card(Value.Two, Suit.Diamonds),
+                
+                
+            });
+            return hand;
+        }
+
+        public static Hand FullHouseThreeFours()
+        {
+            var hand = new Hand();
+            hand.AddCards(new List<Card>
+            {
+                 new Card(Value.Four, Suit.Clubs),
+                 new Card(Value.Four, Suit.Hearts),
+                 new Card(Value.Four, Suit.Diamonds),
+                 new Card(Value.Two, Suit.Clubs),
+                 new Card(Value.Two, Suit.Diamonds),
+                
+                
+            });
+            return hand;
+        }
+
+        public static Hand FullHouseThreeEightsPairOfFours()
+        {
+            var hand = new Hand();
+            hand.AddCards(new List<Card>
+            {
+                 new Card(Value.Eight, Suit.Clubs),
+                 new Card(Value.Eight, Suit.Hearts),
+                 new Card(Value.Eight, Suit.Diamonds),
+                 new Card(Value.Four, Suit.Clubs),
+                 new Card(Value.Four, Suit.Diamonds),
+                
+                
+            });
+            return hand;
+        }
+
+        public static Hand FullHouseThreeEightsPairOfKings()
+        {
+            var hand = new Hand();
+            hand.AddCards(new List<Card>
+            {
+                 new Card(Value.Eight, Suit.Clubs),
+                 new Card(Value.Eight, Suit.Hearts),
+                 new Card(Value.Eight, Suit.Diamonds),
+                 new Card(Value.King, Suit.Clubs),
+                 new Card(Value.King, Suit.Diamonds),
+                
                 
             });
             return hand;
@@ -284,18 +363,19 @@ namespace cardGame.Test.Builders
             return hand;
         }
 
-        public static Hand AceHighFlushNoStraight()
+        public static Hand FlushAceHighNineLow()
         {
             var hand = new Hand();
             hand.AddCards(new List<Card>
             {
-                new Card(Value.Ten, Suit.Hearts),
+                new Card(Value.Nine, Suit.Hearts),
                 new Card(Value.Jack, Suit.Hearts),
-                new Card(Value.Eight, Suit.Hearts),
                 new Card(Value.Queen, Suit.Hearts),
+                new Card(Value.King, Suit.Hearts),
                 new Card(Value.Ace, Suit.Hearts)
             });
             return hand;
+            
         }
 
        

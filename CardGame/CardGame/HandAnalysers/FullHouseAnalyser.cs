@@ -10,7 +10,7 @@ namespace CardGame.HandAnalysers
             var threeOfAKind = false;
             var pair = false;
 
-            for (var i = Value.Two; i < Value.Ace; i++)
+            for (var i = Value.Two; i <= Value.Ace; i++)
             {
                 IEnumerable<Card> cardsOfSameValue = hand.GetCards().Where(obj => obj.GetCardValue() == i);
 

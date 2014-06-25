@@ -8,7 +8,7 @@ namespace CardGame.HandAnalysers
         public bool IsHand(Hand hand)
         {
             var numberOfPairs = 0;
-            for (var i = Value.Two; i < Value.Ace; i++)
+            for (var i = Value.Two; i <= Value.Ace; i++)
             {
                 var cardsOfSameValue = hand.GetCards().Where(obj => obj.GetCardValue() == i);
 

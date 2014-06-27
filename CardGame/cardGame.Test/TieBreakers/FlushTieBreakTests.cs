@@ -1,6 +1,8 @@
-﻿using CardGame;
+﻿using System.Linq;
+using CardGame;
 using cardGame.Test.Builders;
 using NUnit.Framework;
+using System.Collections.Generic;
 
 namespace cardGame.Test.TieBreakers
 {
@@ -13,7 +15,7 @@ namespace cardGame.Test.TieBreakers
             var handOne = HandBuilder.FlushSevenHigh();
             var handTwo = HandBuilder.FlushAceHighNineLow();
 
-            var result = IdentifyBestFlush(handOne, handTwo);
+            var result = IdentifyBestFlush(handTwo, handOne);
             
             Assert.That(result.Equals(handTwo));
         }
@@ -21,17 +23,27 @@ namespace cardGame.Test.TieBreakers
         private Hand IdentifyBestFlush(Hand handOne, Hand handTwo)
         {
             Hand bestHand = null;
+            var handSize = handOne.GetCards().Count;
 
-            var handOneHighCard = DetermineHighCardValue(handOne);
-            var handTwoHighCard = DetermineHighCardValue(handTwo);
+            handOne.GetCards().Sort();
+            handOne.GetCards().Reverse();
 
-            if (handOneHighCard > handTwoHighCard)
+            handTwo.GetCards().Sort();
+            handTwo.GetCards().Reverse();
+
+            for (var i = 0; i < handSize; i ++)
             {
-                bestHand = handOne;
-            }
-            if (handTwoHighCard > handOneHighCard)
-            {
-                bestHand = handTwo;
+                if (handOne.GetCards()[i].GetCardValue() > handTwo.GetCards()[i].GetCardValue())
+                {
+                    bestHand = handOne;
+                    break;
+                }
+
+                if (handTwo.GetCards()[i].GetCardValue() > handOne.GetCards()[i].GetCardValue())
+                {
+                    bestHand = handTwo;
+                    break;
+                }
             }
             return bestHand;
         }

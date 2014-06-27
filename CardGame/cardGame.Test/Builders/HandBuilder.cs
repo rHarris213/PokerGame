@@ -74,7 +74,7 @@ namespace cardGame.Test.Builders
                 new Card(Value.Two, Suit.Clubs),
                 new Card(Value.Three, Suit.Clubs),
                 new Card(Value.Four, Suit.Clubs),
-                new Card(Value.Five, Suit.Clubs),
+                new Card(Value.Six, Suit.Clubs),
                 new Card(Value.Seven, Suit.Clubs)
             });
             return hand;
@@ -85,11 +85,12 @@ namespace cardGame.Test.Builders
             var hand = new Hand();
             hand.AddCards(new List<Card>
             {
+                new Card(Value.Ace, Suit.Clubs),
+                new Card(Value.Queen, Suit.Clubs),
                 new Card(Value.Two, Suit.Clubs),
                 new Card(Value.Jack, Suit.Clubs),
-                new Card(Value.Queen, Suit.Clubs),
-                new Card(Value.King, Suit.Clubs),
-                new Card(Value.Ace, Suit.Clubs)
+                new Card(Value.King, Suit.Clubs)
+                
             });
             return hand;
         }

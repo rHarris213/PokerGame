@@ -45,8 +45,8 @@ namespace cardGame.Test.TieBreakers
             Hand bestHand = null;
             var handSize = handOne.GetCards().Count;
 
-            handOne.GetCards().Sort();
-            handTwo.GetCards().Sort();
+            handOne.ArrangeCardsHighToLow();
+            handTwo.ArrangeCardsHighToLow();
         
 
             for (var i = 0; i < handSize; i ++)

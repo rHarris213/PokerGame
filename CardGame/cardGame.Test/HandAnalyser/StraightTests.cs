@@ -20,7 +20,7 @@ namespace cardGame.Test.HandAnalyser
 
             _analyser = new StraightAnalyser(new FlushAnalyser());
 
-            var result = _analyser.IsHand(HandBuilder.Straight());
+            var result = _analyser.IsHand(HandBuilder.StraightJackHigh());
 
             Assert.IsTrue(result);
 

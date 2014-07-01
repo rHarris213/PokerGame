@@ -84,6 +84,18 @@ namespace CardGame
             return new List<Card>(_cards.OrderBy(o => o.GetCardValue()));
         }
 
-        
+        public void ArrangeCardsHighToLow()
+        {
+            GetCards().Sort();
+            GetCards().Reverse();
+
+        }
+
+        public void ArrangeCardsLowToHigh()
+        {
+            GetCards().Sort();
+            
+
+        }
     }
 }

@@ -309,7 +309,7 @@ namespace cardGame.Test.Builders
             return hand;
         }
 
-        public static Hand Straight()
+        public static Hand StraightJackHigh()
         {
             var hand = new Hand();
             hand.AddCards(new List<Card>
@@ -322,6 +322,37 @@ namespace cardGame.Test.Builders
             });
             return hand;
         }
+
+        public static Hand StraightSixHigh()
+        {
+            var hand = new Hand();
+            hand.AddCards(new List<Card>
+            {
+               new Card(Value.Two, Suit.Hearts),
+               new Card(Value.Three, Suit.Diamonds),
+               new Card(Value.Four, Suit.Clubs),
+               new Card(Value.Five, Suit.Diamonds),
+               new Card(Value.Six, Suit.Clubs)
+            });
+            return hand;
+        }
+
+        public static Hand StraightAceLow()
+        {
+
+            var hand = new Hand();
+            hand.AddCards(new List<Card>
+            {
+                new Card(Value.Ace, Suit.Clubs),
+                new Card(Value.Two, Suit.Diamonds),
+                new Card(Value.Three, Suit.Hearts),
+                new Card(Value.Four, Suit.Spades),
+                new Card(Value.Five, Suit.Diamonds)
+            });
+            return hand;
+
+        }
+        
 
         public static Hand FiveOfAKind()
         {

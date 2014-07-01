@@ -95,6 +95,21 @@ namespace cardGame.Test.Builders
             return hand;
         }
 
+        public static Hand FlushAceHighThreeLow()
+        {
+            var hand = new Hand();
+            hand.AddCards(new List<Card>
+            {
+                new Card(Value.Ace, Suit.Clubs),
+                new Card(Value.Queen, Suit.Clubs),
+                new Card(Value.Three, Suit.Clubs),
+                new Card(Value.Jack, Suit.Clubs),
+                new Card(Value.King, Suit.Clubs)
+                
+            });
+            return hand;
+        }
+
         public static Hand FourOfAKindSevens()
         {
             var hand = new Hand();

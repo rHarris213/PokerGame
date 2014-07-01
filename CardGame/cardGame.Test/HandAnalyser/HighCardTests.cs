@@ -27,7 +27,7 @@ namespace cardGame.Test.HandAnalyser
     {
         public bool IsHand(Hand twoPair)
         {
-            throw new System.NotImplementedException();
+            return false;
         }
     }
 }

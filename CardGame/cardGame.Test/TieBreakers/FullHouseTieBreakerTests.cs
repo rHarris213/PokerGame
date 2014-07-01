@@ -31,32 +31,37 @@ namespace cardGame.Test.TieBreakers
             Assert.That(result.Equals(handTwo));
         }
 
+        [Test] public void Full_Houses_With_Same_Cards_Should_Tie()
+        {
+            var handOne = HandBuilder.FullHouseThreeEightsPairOfFours();
+            var handTwo = HandBuilder.FullHouseThreeEightsPairOfFours();
+
+            var result = GetFullHouseWinner(handOne, handTwo);
+
+            Assert.IsNull(result);
+        }
+
         private static Hand GetFullHouseWinner(Hand handOne, Hand handTwo)
         {
             Hand bestHand = null;
-
-            var handOneThreeOfAKindCardValue = GetThreeOfAKindCardValue(handOne);
-            var handTwoThreeOfAKindCardValue = GetThreeOfAKindCardValue(handTwo);
-
-            if (handOneThreeOfAKindCardValue > handTwoThreeOfAKindCardValue)
+            
+            if (GetThreeOfAKindCardValue(handOne) > GetThreeOfAKindCardValue(handTwo))
             {
                 bestHand = handOne;
             }
-            if (handTwoThreeOfAKindCardValue > handOneThreeOfAKindCardValue)
+            if (GetThreeOfAKindCardValue(handTwo) > GetThreeOfAKindCardValue(handOne))
             {
                 bestHand = handTwo;
             }
 
             if (bestHand != null) return bestHand;
 
-            var handOnePairCardValue = GetPairCardValue(handOne);
-            var handTwoPairCardValue = GetPairCardValue(handTwo);
-
-            if (handOnePairCardValue > handTwoPairCardValue)
+            
+            if ( GetPairCardValue(handOne) > GetPairCardValue(handTwo))
             {
                 bestHand = handOne;
             }
-            if (handTwoPairCardValue > handOnePairCardValue)
+            if (GetPairCardValue(handTwo) >  GetPairCardValue(handOne))
             {
                 bestHand = handTwo;
             }

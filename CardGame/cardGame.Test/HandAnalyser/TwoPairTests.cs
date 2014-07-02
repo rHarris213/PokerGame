@@ -16,7 +16,7 @@ namespace cardGame.Test.HandAnalyser
        
             var analyser = new TwoPairAnalyser();
 
-            var result = analyser.IsHand(HandBuilder.TwoPair());
+            var result = analyser.IsHand(HandBuilder.TwoPairSevensOverTwosThreeKicker());
 
             Assert.IsTrue(result);
 

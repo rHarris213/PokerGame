@@ -27,11 +27,11 @@ namespace cardGame.Test
             //var result = evaluator.EvaluateHandScore(royalFlush);
             //assert
 
-            var playerOne = HandBuilder.TwoPair();
-            var playerTwo = HandBuilder.TwoPair();
-            var playerThree = HandBuilder.TwoPair();
-            var playerFour = HandBuilder.TwoPair();
-            var playerFive = HandBuilder.TwoPair();
+            var playerOne = HandBuilder.TwoPairSevensOverTwosThreeKicker();
+            var playerTwo = HandBuilder.TwoPairSevensOverTwosThreeKicker();
+            var playerThree = HandBuilder.TwoPairSevensOverTwosThreeKicker();
+            var playerFour = HandBuilder.TwoPairSevensOverTwosThreeKicker();
+            var playerFive = HandBuilder.TwoPairSevensOverTwosThreeKicker();
             var playerSix = HandBuilder.RoyalFlush();
 
             var hands = new List<Hand> { playerOne, playerTwo,playerThree,playerFour,playerFive,playerSix };

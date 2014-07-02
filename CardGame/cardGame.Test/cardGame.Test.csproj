@@ -66,6 +66,8 @@
     <Compile Include="TieBreakers\FullHouseTieBreakerTests.cs" />
     <Compile Include="TieBreakers\StraightFlushTieTests.cs" />
     <Compile Include="TieBreakers\StraightTieBreakerTests.cs" />
+    <Compile Include="TieBreakers\ThreeOfAKindTieBreakerTests.cs" />
+    <Compile Include="TieBreakers\TwoPairTieBreakerTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\CardGame\CardGame.csproj">

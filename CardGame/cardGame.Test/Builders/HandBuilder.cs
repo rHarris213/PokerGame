@@ -250,13 +250,72 @@ namespace cardGame.Test.Builders
             return hand;
         }
 
-        public static Hand TwoPair()
+        public static Hand TwoPairSevensOverTwosThreeKicker()
         {
             var hand = new Hand();
             hand.AddCards(new List<Card>
             {
 
                 new Card(Value.Three, Suit.Clubs),
+                new Card(Value.Seven, Suit.Hearts),
+                new Card(Value.Seven, Suit.Diamonds),
+                new Card(Value.Two, Suit.Clubs),
+                new Card(Value.Two, Suit.Diamonds),
+            });
+            return hand;
+        }
+
+        public static Hand TwoPairKingsOverTensThreeKicker()
+        {
+            var hand = new Hand();
+            hand.AddCards(new List<Card>
+            {
+
+                new Card(Value.Three, Suit.Clubs),
+                new Card(Value.King, Suit.Hearts),
+                new Card(Value.King, Suit.Diamonds),
+                new Card(Value.Ten, Suit.Clubs),
+                new Card(Value.Ten, Suit.Diamonds),
+            });
+            return hand;
+        }
+        public static Hand TwoPairKingsOverNinesThreeKicker()
+        {
+            var hand = new Hand();
+            hand.AddCards(new List<Card>
+            {
+
+                new Card(Value.Three, Suit.Clubs),
+                new Card(Value.King, Suit.Hearts),
+                new Card(Value.King, Suit.Diamonds),
+                new Card(Value.Nine, Suit.Clubs),
+                new Card(Value.Nine, Suit.Diamonds),
+            });
+            return hand;
+        }
+
+        public static Hand TwoPairQueensOverJacksThreeKicker()
+        {
+            var hand = new Hand();
+            hand.AddCards(new List<Card>
+            {
+
+                new Card(Value.Three, Suit.Clubs),
+                new Card(Value.Queen, Suit.Hearts),
+                new Card(Value.Queen, Suit.Diamonds),
+                new Card(Value.Jack, Suit.Clubs),
+                new Card(Value.Jack, Suit.Diamonds),
+            });
+            return hand;
+        }
+
+        public static Hand TwoPairSevensOverTwosFourKicker()
+        {
+            var hand = new Hand();
+            hand.AddCards(new List<Card>
+            {
+
+                new Card(Value.Four, Suit.Clubs),
                 new Card(Value.Seven, Suit.Hearts),
                 new Card(Value.Seven, Suit.Diamonds),
                 new Card(Value.Two, Suit.Clubs),
@@ -425,6 +484,64 @@ namespace cardGame.Test.Builders
             
         }
 
+        public static Hand ThreeOfAKindThreesLowKickers()
+        {
+            var hand = new Hand();
+            hand.AddCards(new List<Card>
+            {
+                new Card(Value.Three, Suit.Hearts),
+                new Card(Value.Three, Suit.Spades),
+                new Card(Value.Three, Suit.Diamonds),
+                new Card(Value.Two, Suit.Clubs),
+                new Card(Value.Four, Suit.Hearts)
+            });
+            return hand;
+
+        }
+
+        public static Hand ThreeOfAKindThreesHighKickers()
+        {
+            var hand = new Hand();
+            hand.AddCards(new List<Card>
+            {
+                new Card(Value.Three, Suit.Hearts),
+                new Card(Value.Three, Suit.Spades),
+                new Card(Value.Three, Suit.Diamonds),
+                new Card(Value.Ace, Suit.Clubs),
+                new Card(Value.King, Suit.Hearts)
+            });
+            return hand;
+
+        }
+
+        public static Hand ThreeOfAKindKingsLowKickers()
+        {
+            var hand = new Hand();
+            hand.AddCards(new List<Card>
+            {
+                new Card(Value.King, Suit.Hearts),
+                new Card(Value.King, Suit.Spades),
+                new Card(Value.King, Suit.Diamonds),
+                new Card(Value.Two, Suit.Clubs),
+                new Card(Value.Three, Suit.Hearts)
+            });
+            return hand;
+
+       }
+        public static Hand ThreeOfAKindKingsHighKickers()
+        {
+            var hand = new Hand();
+            hand.AddCards(new List<Card>
+            {
+                new Card(Value.King, Suit.Hearts),
+                new Card(Value.King, Suit.Spades),
+                new Card(Value.King, Suit.Diamonds),
+                new Card(Value.Ace, Suit.Clubs),
+                new Card(Value.Queen, Suit.Hearts)
+            });
+            return hand;
+
+        }
        
 
     }

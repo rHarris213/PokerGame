@@ -12,7 +12,7 @@ namespace cardGame.Test.TieBreakers
         public void Four_Of_A_Kind_Tie_Breaker_Should_Identify_Higher_Value_Multiple()
         {
             var handOne = HandBuilder.FourOfAKindSevens();
-            var handTwo =  HandBuilder.FourOfAKindKings();
+            var handTwo = HandBuilder.FourOfAKindKings();
 
             var result = IdentifyHighestMultiples(handOne, handTwo);
 
@@ -29,6 +29,7 @@ namespace cardGame.Test.TieBreakers
 
             Assert.IsNull(result);
         }
+
         [Test]
         public void Four_Of_A_Kind_Tie_Breaker_Can_Be_Won_With_High_Kicker()
         {
@@ -44,28 +45,25 @@ namespace cardGame.Test.TieBreakers
         {
             Hand bestHand = null;
 
-            var handOneFourValue = IdentifyFourOfAKindCardValue(handOne);
-            var handTwoFourValue = IdentifyFourOfAKindCardValue(handTwo);
 
-            if (handOneFourValue > handTwoFourValue)
+            if (GetFourOfAKindCardValue(handOne) > GetFourOfAKindCardValue(handTwo))
             {
                 bestHand = handOne;
             }
-            if (handTwoFourValue > handOneFourValue)
+            if (GetFourOfAKindCardValue(handTwo) > GetFourOfAKindCardValue(handOne))
             {
                 bestHand = handTwo;
             }
 
             if (bestHand != null) return bestHand;
 
-            var handOneKickerValue = GetKickerCardValue(handOne);
-            var handTwoKickerValue = GetKickerCardValue(handTwo);
 
-            if (handOneKickerValue > handTwoKickerValue)
+
+            if (GetKickerCardValue(handOne) > GetKickerCardValue(handTwo))
             {
                 bestHand = handOne;
             }
-            if (handTwoKickerValue > handOneKickerValue)
+            if (GetKickerCardValue(handTwo) > GetKickerCardValue(handOne))
             {
                 bestHand = handTwo;
             }
@@ -89,7 +87,7 @@ namespace cardGame.Test.TieBreakers
             return handOneKickerValue;
         }
 
-        private static Value IdentifyFourOfAKindCardValue(Hand hand)
+        private static Value GetFourOfAKindCardValue(Hand hand)
         {
             for (var i = Value.Two; i <= Value.Ace; i++)
             {
@@ -106,3 +104,5 @@ namespace cardGame.Test.TieBreakers
         }
     }
 }
+
+

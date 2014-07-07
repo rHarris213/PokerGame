@@ -2,6 +2,7 @@
 using CardGame;
 using cardGame.Test.Builders;
 using NUnit.Framework;
+using cardGame.Test.TieBreakers;
 
 namespace cardGame.Test.TieBreakers
 {
@@ -43,65 +44,20 @@ namespace cardGame.Test.TieBreakers
 
         private Hand IdentifyHighestMultiples(Hand handOne, Hand handTwo)
         {
-            Hand bestHand = null;
+            
+            var highestFourOfAKindHand = MultiplesTieBreaker.FindHigherValueGroupOfCards(handOne, handTwo, 4);
 
-
-            if (GetFourOfAKindCardValue(handOne) > GetFourOfAKindCardValue(handTwo))
+            if (highestFourOfAKindHand != null)
             {
-                bestHand = handOne;
+                return highestFourOfAKindHand;
             }
-            if (GetFourOfAKindCardValue(handTwo) > GetFourOfAKindCardValue(handOne))
-            {
-                bestHand = handTwo;
-            }
+            var highestKickerHand = MultiplesTieBreaker.FindHigherValueGroupOfCards(handOne, handTwo, 1);
 
-            if (bestHand != null) return bestHand;
+            return highestKickerHand;
 
-
-
-            if (GetKickerCardValue(handOne) > GetKickerCardValue(handTwo))
-            {
-                bestHand = handOne;
-            }
-            if (GetKickerCardValue(handTwo) > GetKickerCardValue(handOne))
-            {
-                bestHand = handTwo;
-            }
-
-            return bestHand;
         }
 
-        private static Value GetKickerCardValue(Hand handOne)
-        {
-            var handOneKickerValue = Value.Two;
-            for (var i = Value.Two; i <= Value.Ace; i++)
-            {
-                var cardValue = handOne.GetCards().Where(obj => obj.GetCardValue() == i);
-
-                if (cardValue.Count() == 1)
-                {
-                    handOneKickerValue = i;
-                    break;
-                }
-            }
-            return handOneKickerValue;
-        }
-
-        private static Value GetFourOfAKindCardValue(Hand hand)
-        {
-            for (var i = Value.Two; i <= Value.Ace; i++)
-            {
-                var cardValue = hand.GetCards().Where(obj => obj.GetCardValue() == i);
-
-                if (cardValue.Count() == 4)
-                {
-                    var fourOfAKindValue = i;
-                    return fourOfAKindValue;
-                }
-            }
-            return Value.Two;
-
-        }
+       
     }
 }
 

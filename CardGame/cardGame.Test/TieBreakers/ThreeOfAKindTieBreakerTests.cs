@@ -5,6 +5,7 @@ using System.Xml.Schema;
 using CardGame;
 using cardGame.Test.Builders;
 using NUnit.Framework;
+using cardGame.Test.TieBreakers;
 
 namespace cardGame.Test.TieBreakers
 {
@@ -33,69 +34,25 @@ namespace cardGame.Test.TieBreakers
             Assert.That(result.Equals(handTwo));
         }
         
-
-
-
-
-
         private Hand FindBestHand(Hand handTwo, Hand handOne)
         {
-            Hand bestHand = null;
-            if (ThreeOfAKindCardValue(handOne) > ThreeOfAKindCardValue(handTwo))
-            {
-                bestHand = handOne;
-            }
-            if (ThreeOfAKindCardValue(handTwo) > ThreeOfAKindCardValue(handOne))
-            {
-                bestHand = handTwo;
-            }
-            if (bestHand != null)
-            {
-                return bestHand;
-            }
-           
+            
 
-            return CompareKickers(handTwo, handOne);
+            var bestThreeOfAKindHand = MultiplesTieBreaker.FindHigherValueGroupOfCards(handOne, handTwo, 3);
+
+            if (bestThreeOfAKindHand != null)
+            {
+                return bestThreeOfAKindHand;
+            }
+            var bestPairHand = MultiplesTieBreaker.FindHigherValueGroupOfCards(handOne, handTwo, 1);
+
+            return bestPairHand;
+            
         }
 
-        private static Hand CompareKickers(Hand handTwo, Hand handOne)
-        {
-            Hand bestHand = null;
-            for (var i = Value.Ace; i >= Value.Two; i--)
-            {
-               
-                var handOneKicker = handOne.GetCards().Count(obj => obj.GetCardValue() == i);
-                var handTwoKicker = handTwo.GetCards().Count(obj => obj.GetCardValue() == i);
+        
 
 
-                if (handOneKicker == 1 && handTwoKicker != 1)
-                {
-                    bestHand = handOne;
-                    break;
-                }
-                if (handTwoKicker == 1 && handOneKicker != 1)
-                {
-                    bestHand = handTwo;
-                    break;
-                }
-            }
-            return bestHand;
-        }
-
-
-        private static Value ThreeOfAKindCardValue(Hand hand)
-        {
-            var tripletCardValue = (Value)0;
-
-            for (var i = Value.Two; i <= Value.Ace; i++)
-            {
-                
-                if (hand.GetCards().Count(obj => obj.GetCardValue() == i) != 3) continue;
-                
-                tripletCardValue = i;
-                break;
-            }
-            return tripletCardValue;
-        }
+        
     }
 }

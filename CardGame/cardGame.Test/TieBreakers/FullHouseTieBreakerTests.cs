@@ -3,11 +3,12 @@ using System.Linq;
 using CardGame;
 using cardGame.Test.Builders;
 using NUnit.Framework;
+using cardGame.Test.TieBreakers;
 
 namespace cardGame.Test.TieBreakers
 {
     [TestFixture]
-    class FullHouseTieBreakerTests
+    internal class FullHouseTieBreakerTests
     {
         [Test]
         public void Full_House_With_Higher_Three_Of_A_Kind_Should_Win()
@@ -31,7 +32,8 @@ namespace cardGame.Test.TieBreakers
             Assert.That(result.Equals(handTwo));
         }
 
-        [Test] public void Full_Houses_With_Same_Cards_Should_Tie()
+        [Test]
+        public void Full_Houses_With_Same_Cards_Should_Tie()
         {
             var handOne = HandBuilder.FullHouseThreeEightsPairOfFours();
             var handTwo = HandBuilder.FullHouseThreeEightsPairOfFours();
@@ -43,65 +45,17 @@ namespace cardGame.Test.TieBreakers
 
         private static Hand GetFullHouseWinner(Hand handOne, Hand handTwo)
         {
-            Hand bestHand = null;
-            
-            if (GetThreeOfAKindCardValue(handOne) > GetThreeOfAKindCardValue(handTwo))
-            {
-                bestHand = handOne;
-            }
-            if (GetThreeOfAKindCardValue(handTwo) > GetThreeOfAKindCardValue(handOne))
-            {
-                bestHand = handTwo;
-            }
 
-            if (bestHand != null) return bestHand;
+            var highestThreeOfAKindHand = MultiplesTieBreaker.FindHigherValueGroupOfCards(handOne, handTwo, 3);
 
-            
-            if ( GetPairCardValue(handOne) > GetPairCardValue(handTwo))
-            {
-                bestHand = handOne;
-            }
-            if (GetPairCardValue(handTwo) >  GetPairCardValue(handOne))
-            {
-                bestHand = handTwo;
-            }
+            if (highestThreeOfAKindHand != null)
+                return highestThreeOfAKindHand;
 
-            return bestHand;
+            var highestPairHand = MultiplesTieBreaker.FindHigherValueGroupOfCards(handOne, handTwo, 2);
+            return highestPairHand;
+
 
         }
 
-        private static Value GetPairCardValue(Hand hand)
-        {
-            var pairCardValue = Value.Two;
-            for (var i = Value.Two; i <= Value.Ace; i++)
-            {
-                IEnumerable<Card> cardsOfSameValue = hand.GetCards().Where(obj => obj.GetCardValue() == i);
-
-
-                if (cardsOfSameValue.Count() == 2)
-                {
-                    pairCardValue = i;
-                }
-            }
-            return pairCardValue;
-        }
-
-        private static Value GetThreeOfAKindCardValue(Hand handOne)
-        {
-            var handOneThreeOfAKindCardValue = Value.Two;
-
-            for (var i = Value.Two; i <= Value.Ace; i++)
-            {
-                IEnumerable<Card> cardsOfSameValue = handOne.GetCards().Where(obj => obj.GetCardValue() == i);
-
-
-                if (cardsOfSameValue.Count() == 3)
-                {
-                    handOneThreeOfAKindCardValue = i;
-                    
-                }
-            }
-            return handOneThreeOfAKindCardValue;
-        }
     }
 }

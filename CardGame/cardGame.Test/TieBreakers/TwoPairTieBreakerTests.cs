@@ -1,8 +1,12 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.InteropServices;
 using CardGame;
 using cardGame.Test.Builders;
 using NUnit.Framework;
+using cardGame.Test.TieBreakers;
+
+
 
 namespace cardGame.Test.TieBreakers
 {   
@@ -55,52 +59,16 @@ namespace cardGame.Test.TieBreakers
 
         private Hand FindBestTwoPair(Hand handOne, Hand handTwo)
         {
-            Hand bestHand = null;
 
-            handOne.ArrangeCardsHighToLow();
-            handTwo.ArrangeCardsHighToLow();
-
+            var bestPairHand = MultiplesTieBreaker.FindHigherValueGroupOfCards(handOne, handTwo, 2);
             
-            for (var i = Value.Ace; i >= Value.Two; i--)
-            {
-                var handOnePair = handOne.GetCards().Count(obj => obj.GetCardValue() == i);
-                var handTwoPair = handTwo.GetCards().Count(obj => obj.GetCardValue() == i);
 
-                if (handOnePair == 2 && handTwoPair != 2)
-                {
-                    bestHand = handOne;
-                    break;
-                }
-                if (handTwoPair == 2 && handOnePair != 2)
-                {
-                    bestHand = handTwo;
-                    break;
-                }
+            if (bestPairHand != null)
+            {
+                return bestPairHand;
             }
 
-            if (bestHand != null)
-            {
-                return bestHand;
-            }
-            for (var i = Value.Ace; i >= Value.Two; i --)
-            {
-
-                var handOneKicker = handOne.GetCards().Count(obj => obj.GetCardValue() == i);
-                var handTwoKicker = handTwo.GetCards().Count(obj => obj.GetCardValue() == i);
-
-                if (handOneKicker == 1 && handTwoKicker != 1)
-                {
-                    bestHand = handOne;
-                    break;
-                }
-                if (handTwoKicker == 1 && handOneKicker != 1)
-                {
-                    bestHand = handTwo;
-                    break;
-                }
-            }
-
-            return bestHand;
+            return MultiplesTieBreaker.FindHigherValueGroupOfCards(handOne, handTwo, 1);
         }
     }
 }

@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System.Collections.Generic;
+using System.Linq;
 using CardGame;
 using cardGame.Test.Builders;
 using NUnit.Framework;
@@ -34,27 +35,34 @@ namespace cardGame.Test.TieBreakers
         {
             Hand bestHand = null;
 
-            handOne.ArrangeCardsHighToLow();
-            handTwo.ArrangeCardsHighToLow();
+            var handOneHighest = FindHighestSingleCard(handOne.GetCards());
+            var handTwoHighest = FindHighestSingleCard(handTwo.GetCards());
 
-           for (var i = Value.Ace; i >= Value.Two; i --)
+            if (handOneHighest > handTwoHighest)
+                return handOne;
+            if (handTwoHighest > handOneHighest)
+                return handTwo;
+
+          
+            return bestHand;
+        }
+
+        private Value FindHighestSingleCard(List<Card> cards)
+        {
+            for (var cardValue = Value.Ace; cardValue >= Value.Two; cardValue--)
             {
 
-                var handOneKicker = handOne.GetCards().Count(obj => obj.GetCardValue() == i);
-                var handTwoKicker = handTwo.GetCards().Count(obj => obj.GetCardValue() == i);
+                var amountOfCard = cards.Count(obj => obj.GetCardValue() == cardValue);
+                
 
-                if (handOneKicker == 1 && handTwoKicker != 1)
+                if (amountOfCard == 1)
                 {
-                    bestHand = handOne;
-                    break;
+                    return cardValue;
                 }
-                if (handTwoKicker == 1 && handOneKicker != 1)
-                {
-                    bestHand = handTwo;
-                    break;
-                }
+                
             }
-            return bestHand;
+
+            return 0;
         }
     }
 }

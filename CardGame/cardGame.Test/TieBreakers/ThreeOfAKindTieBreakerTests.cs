@@ -41,11 +41,11 @@ namespace cardGame.Test.TieBreakers
         private Hand FindBestHand(Hand handTwo, Hand handOne)
         {
             Hand bestHand = null;
-            if (GetThreeOfAKindCardValue(handOne) > GetThreeOfAKindCardValue(handTwo))
+            if (ThreeOfAKindCardValue(handOne) > ThreeOfAKindCardValue(handTwo))
             {
                 bestHand = handOne;
             }
-            if (GetThreeOfAKindCardValue(handTwo) > GetThreeOfAKindCardValue(handOne))
+            if (ThreeOfAKindCardValue(handTwo) > ThreeOfAKindCardValue(handOne))
             {
                 bestHand = handTwo;
             }
@@ -64,16 +64,16 @@ namespace cardGame.Test.TieBreakers
             for (var i = Value.Ace; i >= Value.Two; i--)
             {
                
-                IEnumerable<Card> handOneKicker = handOne.GetCards().Where(obj => obj.GetCardValue() == i);
-                IEnumerable<Card> handTwoKicker = handTwo.GetCards().Where(obj => obj.GetCardValue() == i);
+                var handOneKicker = handOne.GetCards().Count(obj => obj.GetCardValue() == i);
+                var handTwoKicker = handTwo.GetCards().Count(obj => obj.GetCardValue() == i);
 
 
-                if (handOneKicker.Count() == 1 && handTwoKicker.Count() != 1)
+                if (handOneKicker == 1 && handTwoKicker != 1)
                 {
                     bestHand = handOne;
                     break;
                 }
-                if (handTwoKicker.Count() == 1 && handOneKicker.Count() != 1)
+                if (handTwoKicker == 1 && handOneKicker != 1)
                 {
                     bestHand = handTwo;
                     break;
@@ -83,20 +83,17 @@ namespace cardGame.Test.TieBreakers
         }
 
 
-        private static Value GetThreeOfAKindCardValue(Hand hand)
+        private static Value ThreeOfAKindCardValue(Hand hand)
         {
             var tripletCardValue = (Value)0;
 
             for (var i = Value.Two; i <= Value.Ace; i++)
             {
-                IEnumerable<Card> cardsOfSameValue = hand.GetCards().Where(obj => obj.GetCardValue() == i);
-
-
-                if (cardsOfSameValue.Count() == 3)
-                {
-                    tripletCardValue = i;
-
-                }
+                
+                if (hand.GetCards().Count(obj => obj.GetCardValue() == i) != 3) continue;
+                
+                tripletCardValue = i;
+                break;
             }
             return tripletCardValue;
         }

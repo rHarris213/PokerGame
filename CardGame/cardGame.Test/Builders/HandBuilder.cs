@@ -542,6 +542,20 @@ namespace cardGame.Test.Builders
             return hand;
 
         }
+
+        public static Hand HighCardNine()
+        {
+            var hand = new Hand();
+            hand.AddCards(new List<Card>
+            {
+                new Card(Value.Nine, Suit.Hearts),
+                new Card(Value.Eight, Suit.Diamonds),
+                new Card(Value.Four, Suit.Spades),
+                new Card(Value.Three, Suit.Clubs),
+                new Card(Value.Two, Suit.Diamonds)
+            });
+            return hand;
+        }
        
 
     }

@@ -64,6 +64,7 @@
     <Compile Include="TieBreakers\FlushTieBreakTests.cs" />
     <Compile Include="TieBreakers\FourOfAKindTieBreakTests.cs" />
     <Compile Include="TieBreakers\FullHouseTieBreakerTests.cs" />
+    <Compile Include="TieBreakers\HighCardTieBreaker.cs" />
     <Compile Include="TieBreakers\StraightFlushTieTests.cs" />
     <Compile Include="TieBreakers\StraightTieBreakerTests.cs" />
     <Compile Include="TieBreakers\ThreeOfAKindTieBreakerTests.cs" />

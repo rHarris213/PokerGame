@@ -4,7 +4,7 @@ using System.Runtime.InteropServices;
 using CardGame;
 using cardGame.Test.Builders;
 using NUnit.Framework;
-using cardGame.Test.TieBreakers;
+using CardGame.TieBreakers;
 
 
 
@@ -59,8 +59,9 @@ namespace cardGame.Test.TieBreakers
 
         private Hand FindBestTwoPair(Hand handOne, Hand handTwo)
         {
+            
 
-            var bestPairHand = MultiplesTieBreaker.FindHigherValueGroupOfCards(handOne, handTwo, 2);
+            var bestPairHand = MultiplesTieBreaker.DetermineStrongestHand(handOne, handTwo, 2);
             
 
             if (bestPairHand != null)
@@ -68,7 +69,7 @@ namespace cardGame.Test.TieBreakers
                 return bestPairHand;
             }
 
-            return MultiplesTieBreaker.FindHigherValueGroupOfCards(handOne, handTwo, 1);
+            return MultiplesTieBreaker.DetermineStrongestHand(handOne, handTwo, 1);
         }
     }
 }

@@ -9,53 +9,42 @@ namespace cardGame.Test.TieBreakers
     [TestFixture]
     internal class FourOfAKindTieBreakTests
     {
-        [Test]
-        public void Four_Of_A_Kind_Tie_Breaker_Should_Identify_Higher_Value_Multiple()
-        {
-            var handOne = HandBuilder.FourOfAKindSevens();
-            var handTwo = HandBuilder.FourOfAKindKings();
-
-            var result = IdentifyHighestMultiples(handOne, handTwo);
-
-            Assert.That(result.Equals(handTwo));
-        }
-
-        [Test]
-        public void Four_Of_A_Kind_Tie_Breaker_Does_Not_Assign_Winner_When_There_Is_Draw()
-        {
-            var handOne = HandBuilder.FourOfAKindSevens();
-            var handTwo = HandBuilder.FourOfAKindSevens();
-
-            var result = IdentifyHighestMultiples(handOne, handTwo);
-
-            Assert.IsNull(result);
-        }
-
-        [Test]
-        public void Four_Of_A_Kind_Tie_Breaker_Can_Be_Won_With_High_Kicker()
-        {
-            var handOne = HandBuilder.FourOfAKindKingsLowKicker();
-            var handTwo = HandBuilder.FourOfAKindKingsHighKicker();
-
-            var result = IdentifyHighestMultiples(handOne, handTwo);
-
-            Assert.That(result.Equals(handTwo));
-        }
-
-        private Hand IdentifyHighestMultiples(Hand handOne, Hand handTwo)
-        {
+        //[Test]
+        //public void Four_Of_A_Kind_Tie_Breaker_Should_Identify_Higher_Value_Multiple()
+        //{
             
-            var highestFourOfAKindHand = MultiplesTieBreaker.FindHigherValueGroupOfCards(handOne, handTwo, 4);
 
-            if (highestFourOfAKindHand != null)
-            {
-                return highestFourOfAKindHand;
-            }
-            var highestKickerHand = MultiplesTieBreaker.FindHigherValueGroupOfCards(handOne, handTwo, 1);
+        //    var handOne = HandBuilder.FourOfAKindSevens();
+        //    var handTwo = HandBuilder.FourOfAKindKings();
 
-            return highestKickerHand;
+        //    var result = IdentifyHighestMultiples(handOne, handTwo);
 
-        }
+        //    Assert.That(result.Equals(handTwo));
+        //}
+
+        //[Test]
+        //public void Four_Of_A_Kind_Tie_Breaker_Does_Not_Assign_Winner_When_There_Is_Draw()
+        //{
+        //    var handOne = HandBuilder.FourOfAKindSevens();
+        //    var handTwo = HandBuilder.FourOfAKindSevens();
+
+        //    var result = IdentifyHighestMultiples(handOne, handTwo);
+
+        //    Assert.IsNull(result);
+        //}
+
+        //[Test]
+        //public void Four_Of_A_Kind_Tie_Breaker_Can_Be_Won_With_High_Kicker()
+        //{
+        //    var handOne = HandBuilder.FourOfAKindKingsLowKicker();
+        //    var handTwo = HandBuilder.FourOfAKindKingsHighKicker();
+
+        //    var result = IdentifyHighestMultiples(handOne, handTwo);
+
+        //    Assert.That(result.Equals(handTwo));
+        //}
+
+        
 
        
     }

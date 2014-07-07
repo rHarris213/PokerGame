@@ -6,6 +6,7 @@ using CardGame;
 using cardGame.Test.Builders;
 using NUnit.Framework;
 using cardGame.Test.TieBreakers;
+using CardGame.TieBreakers;
 
 namespace cardGame.Test.TieBreakers
 {
@@ -38,13 +39,13 @@ namespace cardGame.Test.TieBreakers
         {
             
 
-            var bestThreeOfAKindHand = MultiplesTieBreaker.FindHigherValueGroupOfCards(handOne, handTwo, 3);
+            var bestThreeOfAKindHand = CardGame.TieBreakers.MultiplesTieBreaker.DetermineStrongestHand(handOne, handTwo, 3);
 
             if (bestThreeOfAKindHand != null)
             {
                 return bestThreeOfAKindHand;
             }
-            var bestPairHand = MultiplesTieBreaker.FindHigherValueGroupOfCards(handOne, handTwo, 1);
+            var bestPairHand = CardGame.TieBreakers.MultiplesTieBreaker.DetermineStrongestHand(handOne, handTwo, 1);
 
             return bestPairHand;
             

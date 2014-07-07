@@ -4,6 +4,7 @@ using CardGame;
 using cardGame.Test.Builders;
 using NUnit.Framework;
 using cardGame.Test.TieBreakers;
+using CardGame.TieBreakers;
 
 namespace cardGame.Test.TieBreakers
 {
@@ -46,12 +47,12 @@ namespace cardGame.Test.TieBreakers
         private static Hand GetFullHouseWinner(Hand handOne, Hand handTwo)
         {
 
-            var highestThreeOfAKindHand = MultiplesTieBreaker.FindHigherValueGroupOfCards(handOne, handTwo, 3);
+            var highestThreeOfAKindHand = MultiplesTieBreaker.DetermineStrongestHand(handOne, handTwo, 3);
 
             if (highestThreeOfAKindHand != null)
                 return highestThreeOfAKindHand;
 
-            var highestPairHand = MultiplesTieBreaker.FindHigherValueGroupOfCards(handOne, handTwo, 2);
+            var highestPairHand = MultiplesTieBreaker.DetermineStrongestHand(handOne, handTwo, 2);
             return highestPairHand;
 
 

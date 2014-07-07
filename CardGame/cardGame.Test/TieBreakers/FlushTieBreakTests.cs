@@ -1,6 +1,7 @@
 ﻿using CardGame;
 using cardGame.Test.Builders;
 using NUnit.Framework;
+using CardGame.TieBreakers;
 
 namespace cardGame.Test.TieBreakers
 {
@@ -10,10 +11,12 @@ namespace cardGame.Test.TieBreakers
         [Test]
         public void Flush_With_Highest_Card_Should_Win()
         {
+            var tieBreaker = new FlushTieBreaker();
+
             var handOne = HandBuilder.FlushSevenHigh();
             var handTwo = HandBuilder.FlushAceHighNineLow();
 
-            var result = IdentifyBestFlush(handTwo, handOne);
+            var result = tieBreaker.DetermineStrongestHand(handTwo, handOne);
             
             Assert.That(result.Equals(handTwo));
         }
@@ -21,10 +24,12 @@ namespace cardGame.Test.TieBreakers
         [Test]
         public void Flush_With_Same_Hand_Should_Draw()
         {
+            var tieBreaker = new FlushTieBreaker();
+
             var handOne = HandBuilder.FlushSevenHigh();
             var handTwo = HandBuilder.FlushSevenHigh();
 
-            var result = IdentifyBestFlush(handTwo, handOne);
+            var result = tieBreaker.DetermineStrongestHand(handTwo, handOne);
 
             Assert.IsNull(result);
         }
@@ -32,41 +37,19 @@ namespace cardGame.Test.TieBreakers
         [Test]
         public void Flush_With_High_Fifth_Kicker_Will_Beat_Same_Flush_With_Lower_Kicker()
         {
+            var tieBreaker = new FlushTieBreaker();
+
             var handOne = HandBuilder.FlushAceHighTwoLow();
             var handTwo = HandBuilder.FlushAceHighThreeLow();
 
-            var result = IdentifyBestFlush(handOne, handTwo);
+            var result = tieBreaker.DetermineStrongestHand(handOne, handTwo);
 
             Assert.That(result.Equals(handTwo));
         }
 
 
 
-        private Hand IdentifyBestFlush(Hand handOne, Hand handTwo)
-        {
-            Hand bestHand = null;
-            var handSize = handOne.GetCards().Count;
-
-            handOne.ArrangeCardsHighToLow();
-            handTwo.ArrangeCardsHighToLow();
         
-
-            for (var i = 0; i < handSize; i ++)
-            {
-                if (handOne.GetCards()[i].GetCardValue() > handTwo.GetCards()[i].GetCardValue())
-                {
-                    bestHand = handOne;
-                    break;
-                }
-
-                if (handTwo.GetCards()[i].GetCardValue() > handOne.GetCards()[i].GetCardValue())
-                {
-                    bestHand = handTwo;
-                    break;
-                }
-            }
-            return bestHand;
-        }
 
        
     }

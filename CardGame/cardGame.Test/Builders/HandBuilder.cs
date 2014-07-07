@@ -556,7 +556,44 @@ namespace cardGame.Test.Builders
             });
             return hand;
         }
-       
+
+        public static Hand FivePairsLowFifthPair()
+        {
+            var hand = new Hand();
+            hand.AddCards(new List<Card>
+            {
+                new Card(Value.King, Suit.Hearts),
+                new Card(Value.King, Suit.Diamonds),
+                new Card(Value.Queen, Suit.Spades),
+                new Card(Value.Queen, Suit.Clubs),
+                new Card(Value.Jack, Suit.Diamonds),
+                new Card(Value.Jack, Suit.Hearts),
+                new Card(Value.Ten, Suit.Diamonds),
+                new Card(Value.Ten, Suit.Spades),
+                new Card(Value.Two, Suit.Clubs),
+                new Card(Value.Two, Suit.Diamonds)
+            });
+            return hand;
+        }
+
+        public static Hand FivePairsHighFifthPair()
+        {
+            var hand = new Hand();
+            hand.AddCards(new List<Card>
+            {
+                new Card(Value.King, Suit.Hearts),
+                new Card(Value.King, Suit.Diamonds),
+                new Card(Value.Queen, Suit.Spades),
+                new Card(Value.Queen, Suit.Clubs),
+                new Card(Value.Jack, Suit.Diamonds),
+                new Card(Value.Jack, Suit.Hearts),
+                new Card(Value.Ten, Suit.Diamonds),
+                new Card(Value.Ten, Suit.Spades),
+                new Card(Value.Nine, Suit.Clubs),
+                new Card(Value.Nine, Suit.Diamonds)
+            });
+            return hand;
+        }
 
     }
 }

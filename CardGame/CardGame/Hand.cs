@@ -19,13 +19,13 @@ namespace CardGame
         RoyalFlush
     };
 
-    public class Hand
+    public class Hand : IHand
     {
-        readonly List<Card> _cards = new List<Card>();
+        List<Card> _cards = new List<Card>();
         private Rank _rank;
 
-        
 
+       
 
         public void AddCards(IList<Card> cards)
         {
@@ -84,6 +84,20 @@ namespace CardGame
             return new List<Card>(_cards.OrderBy(o => o.GetCardValue()));
         }
 
+        public void SortCardsByGroups()
+        {
+            var sortedCards = new List<Card>(from x in _cards
+                                  group x by x.GetCardValue() into g
+                                  orderby g.Count()
+                                  from x in g //flatten the groups
+                                  select x).ToList();
+
+            sortedCards.Reverse();
+            _cards = sortedCards;
+
+
+        }
+
         public void ArrangeCardsHighToLow()
         {
             GetCards().Sort();
@@ -97,5 +111,8 @@ namespace CardGame
             
 
         }
+
+
+        
     }
 }

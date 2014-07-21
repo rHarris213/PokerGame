@@ -4,7 +4,7 @@ namespace CardGame.HandAnalysers
 {
     public class FourOfAKindAnalyser : IHandAnalyser
     {
-        public bool IsHand(Hand hand)
+        public bool IsHand(IHand hand)
         {
             for (var i = Value.Two; i <= Value.Ace; i ++)
             {

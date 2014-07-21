@@ -30,3 +30,5 @@ U:\CurrentProjects\CardGamev1.2\CardGame\cardGame.Test\bin\Debug\CardGame.pdb
 U:\CurrentProjects\CardGamev1.2\CardGame\cardGame.Test\obj\Debug\cardGame.Test.csprojResolveAssemblyReference.cache
 U:\CurrentProjects\CardGamev1.2\CardGame\cardGame.Test\obj\Debug\cardGame.Test.dll
 U:\CurrentProjects\CardGamev1.2\CardGame\cardGame.Test\obj\Debug\cardGame.Test.pdb
+U:\CurrentProjects\CardGamev1.2\CardGame\cardGame.Test\bin\Debug\Microsoft.Practices.Unity.dll
+U:\CurrentProjects\CardGamev1.2\CardGame\cardGame.Test\bin\Debug\Microsoft.Practices.Unity.xml

@@ -4,6 +4,6 @@ namespace CardGame.HandAnalysers
 {
     public interface IHandAnalyser
     {
-        bool IsHand(Hand hand);
+        bool IsHand(IHand hand);
     }
 }

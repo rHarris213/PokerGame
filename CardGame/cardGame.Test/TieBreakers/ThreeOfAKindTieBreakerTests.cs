@@ -37,17 +37,18 @@ namespace cardGame.Test.TieBreakers
         
         private Hand FindBestHand(Hand handTwo, Hand handOne)
         {
-            
 
-            var bestThreeOfAKindHand = CardGame.TieBreakers.MultiplesTieBreaker.DetermineStrongestHand(handOne, handTwo, 3);
+            var repeatingCardsComparer = new GroupsOfCardsOfSameValueTieBreaker(handOne, handTwo);
+
+            var bestThreeOfAKindHand = repeatingCardsComparer.DetermineStrongestHand(3) ;
 
             if (bestThreeOfAKindHand != null)
             {
                 return bestThreeOfAKindHand;
             }
-            var bestPairHand = CardGame.TieBreakers.MultiplesTieBreaker.DetermineStrongestHand(handOne, handTwo, 1);
+            var bestKickerHand = repeatingCardsComparer.DetermineStrongestHand(1);
 
-            return bestPairHand;
+            return bestKickerHand;
             
         }
 

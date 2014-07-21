@@ -5,9 +5,9 @@ namespace CardGame.HandAnalysers
 {
     public class StraightFlushAnalyser : IHandAnalyser 
     {
+       
 
-
-        public bool IsHand(Hand hand)
+        public bool IsHand(IHand hand)
         {
             
             Suit? suit = null;
@@ -38,5 +38,7 @@ namespace CardGame.HandAnalysers
             hand.SetRank(Rank.StraightFlush);
             return true;
         }
+
+        
     }
 }

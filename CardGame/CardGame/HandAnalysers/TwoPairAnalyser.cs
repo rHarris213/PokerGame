@@ -5,7 +5,7 @@ namespace CardGame.HandAnalysers
 {
     public class TwoPairAnalyser : IHandAnalyser
     {
-        public bool IsHand(Hand hand)
+        public bool IsHand(IHand hand)
         {
             
             var numberOfPairs = 0;

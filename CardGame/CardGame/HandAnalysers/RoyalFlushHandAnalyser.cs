@@ -5,7 +5,7 @@ namespace CardGame.HandAnalysers
 {
     public class RoyalFlushHandAnalyser : IHandAnalyser
     {
-        public bool IsHand(Hand hand)
+        public bool IsHand(IHand hand)
         {
             Suit? suit = null;
             var expectedCard = Value.Ten;

@@ -47,12 +47,14 @@ namespace cardGame.Test.TieBreakers
         private static Hand GetFullHouseWinner(Hand handOne, Hand handTwo)
         {
 
-            var highestThreeOfAKindHand = MultiplesTieBreaker.DetermineStrongestHand(handOne, handTwo, 3);
+            var strongerRepeatingCards = new GroupsOfCardsOfSameValueTieBreaker(handOne, handTwo);
+
+            var highestThreeOfAKindHand = strongerRepeatingCards.DetermineStrongestHand(3);
 
             if (highestThreeOfAKindHand != null)
                 return highestThreeOfAKindHand;
 
-            var highestPairHand = MultiplesTieBreaker.DetermineStrongestHand(handOne, handTwo, 2);
+            var highestPairHand = strongerRepeatingCards.DetermineStrongestHand(2);
             return highestPairHand;
 
 

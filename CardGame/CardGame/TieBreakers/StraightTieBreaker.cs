@@ -8,17 +8,10 @@
             handOne.ArrangeCardsLowToHigh();
             handTwo.ArrangeCardsLowToHigh();
 
+            var multBreaker = new GroupsOfCardsOfSameValueTieBreaker(handOne, handTwo);
 
-
-            if (handOne.GetCards()[0].GetCardValue() > handTwo.GetCards()[0].GetCardValue())
-            {
-                bestHand = handOne;
-            }
-            if (handTwo.GetCards()[0].GetCardValue() > handOne.GetCards()[0].GetCardValue())
-            {
-                bestHand = handTwo;
-            }
-
+            bestHand = multBreaker.DetermineStrongestHand(1);
+            
             if (IsAceLowStraight(handOne) && !IsAceLowStraight(handTwo))
                 bestHand = handTwo;
             if (IsAceLowStraight(handTwo) && !IsAceLowStraight(handOne))

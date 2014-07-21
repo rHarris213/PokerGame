@@ -1,31 +1,32 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using CardGame.TieBreakers;
-
-namespace CardGame.TieBreakers
+﻿namespace CardGame.TieBreakers
 {
-    class FourOfAKindTieBreaker : ITieBreaker
+    internal class FourOfAKindTieBreaker : ITieBreaker
     {
-    public Hand DetermineStrongestHand(Hand handOne, Hand handTwo)
+        private readonly ITieBreaker _multBreaker;
+
+        public FourOfAKindTieBreaker(ITieBreaker multBreaker)
         {
+            this._multBreaker = multBreaker;
+        }
+
+        public Hand DetermineStrongestHand(Hand handOne, Hand handTwo)
+        {
+            //inject this
             
+
+            var highestFourOfAKindHand = _multBreaker.DetermineStrongestHand(handOne, handTwo);
+
+            if (highestFourOfAKindHand != null)
+            {
+                return highestFourOfAKindHand;
+            }
+            var highestKickerHand = _multBreaker.DetermineStrongestHand(handOne, handTwo);
+
+            return highestKickerHand;
         
-            //var highestFourOfAKindHand = MultiplesTieBreaker.FindHigherValueMultiples(handOne, handTwo, 4);
-
-            //if (highestFourOfAKindHand != null)
-            //{
-            //    return highestFourOfAKindHand;
-            //}
-            //var highestKickerHand = MultiplesTieBreaker.FindHigherValueMultiples(handOne, handTwo, 1);
-
-            //return highestKickerHand;
-        return null;
-
+            
         }
 
         
-    }
+    } 
 }

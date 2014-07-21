@@ -4,7 +4,7 @@ namespace CardGame.HandAnalysers
 {
     public class FlushAnalyser : IHandAnalyser
     {
-        public bool IsHand(Hand hand)
+        public bool IsHand(IHand hand)
         {
             Suit? suit = null;
             foreach (var card in hand.GetCards())

@@ -20,7 +20,9 @@ namespace cardGame.Test.TieBreakers
             var handOne = HandBuilder.FivePairsHighFifthPair();
             var handTwo = HandBuilder.FivePairsLowFifthPair();
 
-            var result = MultiplesTieBreaker.DetermineStrongestHand(handOne, handTwo, 2);
+            var pairBreaker = new GroupsOfCardsOfSameValueTieBreaker(handOne, handTwo);
+
+            var result = pairBreaker.DetermineStrongestHand(2);
 
             Assert.That(result.Equals(handOne));
         }
@@ -28,12 +30,13 @@ namespace cardGame.Test.TieBreakers
         [TestCase]
         public void Should_Return_Null_If_Multiples_Are_The_Same()
         {
-           
+            
 
             var handOne = HandBuilder.FivePairsHighFifthPair();
             var handTwo = HandBuilder.FivePairsHighFifthPair();
 
-            var result = MultiplesTieBreaker.DetermineStrongestHand(handOne, handTwo, 2);
+            var pairBreaker = new GroupsOfCardsOfSameValueTieBreaker(handOne, handTwo);
+            var result = pairBreaker.DetermineStrongestHand(2);
 
             Assert.IsNull(result);
         }
@@ -46,7 +49,8 @@ namespace cardGame.Test.TieBreakers
             var handOne = HandBuilder.FourOfAKindKings();
             var handTwo = HandBuilder.TwoPairSevensOverTwosFourKicker();
 
-            var result = MultiplesTieBreaker.DetermineStrongestHand(handOne, handTwo, 2);
+            var pairBreaker = new GroupsOfCardsOfSameValueTieBreaker(handOne, handTwo);
+            var result = pairBreaker.DetermineStrongestHand(2);
 
             Assert.That(result.Equals(handTwo));
         }
@@ -60,7 +64,8 @@ namespace cardGame.Test.TieBreakers
             var handOne = HandBuilder.HighCardAce();
             var handTwo = HandBuilder.HighCardAce();
 
-            var result = MultiplesTieBreaker.DetermineStrongestHand(handOne, handTwo, 1);
+            var pairBreaker = new GroupsOfCardsOfSameValueTieBreaker(handOne, handTwo);
+            var result = pairBreaker.DetermineStrongestHand(2);
 
             Assert.IsNull(result);
         }

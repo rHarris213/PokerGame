@@ -11,6 +11,7 @@ namespace cardGame.Test.TieBreakers
         [Test]
         public void Flush_With_Highest_Card_Should_Win()
         {
+
             var tieBreaker = new FlushTieBreaker();
 
             var handOne = HandBuilder.FlushSevenHigh();

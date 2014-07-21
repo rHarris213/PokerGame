@@ -7,12 +7,13 @@ namespace CardGame.HandAnalysers
     {
         private IHandAnalyser _analyser;
 
-        public StraightAnalyser(FlushAnalyser analyser)
+
+        public StraightAnalyser(IHandAnalyser analyser)
         {
             _analyser = analyser;
         }
 
-        public bool IsHand(Hand hand)
+        public bool IsHand(IHand hand)
         {
             if (IsFlush(hand))
                 return false;
@@ -24,7 +25,7 @@ namespace CardGame.HandAnalysers
 
         }
 
-        private bool IsStraight(Hand hand)
+        private bool IsStraight(IHand hand)
         {
             var sortedHand = hand.SortCards();
             var expectedNextCardValue = sortedHand[0].GetCardValue() + 1;
@@ -42,12 +43,12 @@ namespace CardGame.HandAnalysers
             return true;
         }
 
-        private bool IsFlush(Hand hand)
+        private bool IsFlush(IHand hand)
         {
             return _analyser.IsHand(hand);
         }
 
-        private static bool IsAceLowStraight(Hand hand)
+        private static bool IsAceLowStraight(IHand hand)
         {
             hand.GetCards().Sort();
 

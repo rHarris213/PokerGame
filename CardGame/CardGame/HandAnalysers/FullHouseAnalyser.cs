@@ -5,7 +5,7 @@ namespace CardGame.HandAnalysers
 {
     public class FullHouseAnalyser : IHandAnalyser 
     {
-        public bool IsHand(Hand hand)
+        public bool IsHand(IHand hand)
         {
             var threeOfAKind = false;
             var pair = false;

@@ -59,9 +59,9 @@ namespace cardGame.Test.TieBreakers
 
         private Hand FindBestTwoPair(Hand handOne, Hand handTwo)
         {
-            
 
-            var bestPairHand = MultiplesTieBreaker.DetermineStrongestHand(handOne, handTwo, 2);
+            var repeatingCardsComparer = new GroupsOfCardsOfSameValueTieBreaker(handOne, handTwo);
+            var bestPairHand = repeatingCardsComparer.DetermineStrongestHand(2);
             
 
             if (bestPairHand != null)
@@ -69,7 +69,7 @@ namespace cardGame.Test.TieBreakers
                 return bestPairHand;
             }
 
-            return MultiplesTieBreaker.DetermineStrongestHand(handOne, handTwo, 1);
+            return repeatingCardsComparer.DetermineStrongestHand(1);
         }
     }
 }

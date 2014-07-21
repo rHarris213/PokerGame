@@ -16,6 +16,9 @@ namespace CardGame.TieBreakers
             handOne.ArrangeCardsHighToLow();
             handTwo.ArrangeCardsHighToLow();
 
+            var kickerBreaker = new GroupsOfCardsOfSameValueTieBreaker(handOne, handTwo);
+
+            bestHand = kickerBreaker.DetermineStrongestHand(1);
 
             for (var i = 0; i < handSize; i++)
             {

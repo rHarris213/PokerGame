@@ -19,3 +19,9 @@ U:\CurrentProjects\CardGamev1.2\CardGame\CardGame\obj\Debug\CardGame.pdb
 U:\CurrentProjects\CardGamev1.2\CardGame\CardGame\obj\Debug\CardGame.csprojResolveAssemblyReference.cache
 U:\CurrentProjects\CardGamev1.2\CardGame\CardGame\bin\Debug\CardGame.exe
 U:\CurrentProjects\CardGamev1.2\CardGame\CardGame\bin\Debug\CardGame.pdb
+U:\CurrentProjects\CardGamev1.2\CardGame\CardGame\bin\Debug\Microsoft.Practices.Unity.Configuration.dll
+U:\CurrentProjects\CardGamev1.2\CardGame\CardGame\bin\Debug\Microsoft.Practices.Unity.dll
+U:\CurrentProjects\CardGamev1.2\CardGame\CardGame\bin\Debug\Microsoft.Practices.Unity.RegistrationByConvention.dll
+U:\CurrentProjects\CardGamev1.2\CardGame\CardGame\bin\Debug\Microsoft.Practices.Unity.xml
+U:\CurrentProjects\CardGamev1.2\CardGame\CardGame\bin\Debug\Microsoft.Practices.Unity.Configuration.xml
+U:\CurrentProjects\CardGamev1.2\CardGame\CardGame\bin\Debug\Microsoft.Practices.Unity.RegistrationByConvention.xml
